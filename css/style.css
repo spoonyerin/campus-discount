@@ -230,7 +230,11 @@ main { max-width: var(--content-max); margin: 0 auto; padding: var(--sp-5) var(-
 .box--warn { background: var(--warn-bg); color: var(--warn-text); }
 .box--warn h3 { color: var(--warn-text); }
 .box--warn ul { list-style: disc; padding-left: 1.2em; font-size: var(--fs-sm); }
-.box--ended { background: var(--danger-bg); color: var(--danger-text); font-weight: 600; }
+/* 종료 안내: 카드와 같은 '종료' 칩이 묻히지 않도록 상자는 흰 바탕 + 빨간 테두리 (글자 대비 6.5:1) */
+.box--ended {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2);
+  background: var(--surface); border: 1px solid var(--danger-text); color: var(--danger-text); font-weight: 600;
+}
 .highlight {
   padding: var(--sp-4); border-radius: var(--radius);
   background: var(--lime-soft); border-left: 6px solid var(--lime);

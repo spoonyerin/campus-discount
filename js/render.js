@@ -169,7 +169,8 @@ export function renderDetail(b, now, { onClose, onOpenOther, others = [] }) {
       el('button', { type: 'button', class: 'detail__close', 'aria-label': '상세 닫기', onclick: onClose }, '✕')),
 
     status === 'expired' && el('section', { class: 'box box--ended', role: 'note' },
-      '이 혜택은 제휴 기간이 끝났습니다. 연장 여부는 출처 공지에서 확인하세요.'),
+      el('span', { class: 'chip chip--ended' }, '종료'),
+      el('span', {}, '이 혜택은 제휴 기간이 끝났습니다. 연장 여부는 출처 공지에서 확인하세요.')),
 
     checks.length > 0 && el('section', { class: 'box box--warn', 'aria-labelledby': 'check-title' },
       el('h3', { id: 'check-title' }, '추가 확인 필요'),
