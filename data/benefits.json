@@ -5,11 +5,11 @@
     "name": "용가회전훠궈 대학로점",
     "category": "음식점",
     "summary": "탕 결제 금액 15% 할인 (평일 15시 이후·주말 전 시간대)",
-    "keywords": ["식당", "중식"],
+    "keywords": ["SKKUPASS", "스꾸패스", "식당", "중식"],
     "highlights": ["실물 학생증 또는 KINGO-M 제시 필수", "추가 주문 메뉴 할인 제외"],
     "discount": { "label": "기본 결제 금액(탕 결제 금액)의 15% 할인", "percent": 15 },
     "target": ["성균관대학교 학부생"],
-    "howTo": ["결제 시 실물 학생증 또는 KINGO-M 제시 필수"],
+    "howTo": ["결제 시 실물 학생증 또는 KINGO-M 제시 필수 (SKKUPASS 공통 이용 방법)"],
     "conditions": ["평일 15시 이후, 주말 전 시간대 방문 시"],
     "exceptions": [
       "추가 주문 메뉴는 할인 제외",

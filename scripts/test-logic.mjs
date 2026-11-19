@@ -26,7 +26,7 @@ function check(no, title, actual, expected) {
 console.log('[1] 검색 정규화 (공백·대소문자·기호)');
 check('S1', '"TOEIC" → TOEIC 1건 (기존 동작 유지)', search('TOEIC'), ['toeic-speaking']);
 check('S2', '"어학시험" → 어학·시험 분야 1건', search('어학시험'), ['toeic-speaking']);
-check('S3', '"kingo m" → 훠궈 1건', search('kingo m'), ['yonggah-hotpot']);
+check('S3', '"의료 건강" → 의료·건강 분야 1건', search('의료 건강'), ['balgeun-eye-clinic']);
 check('S4', '"헬스장" → 0건', search('헬스장'), []);
 
 console.log('\n[2] 별칭·대상 검색');
@@ -34,6 +34,7 @@ check('K1', '"토익" → TOEIC 1건', search('토익'), ['toeic-speaking']);
 check('K2', '"토스" → TOEIC 1건', search('토스'), ['toeic-speaking']);
 check('K3', '"시력교정" → 안과 1건', search('시력교정'), ['balgeun-eye-clinic']);
 check('K4', '"대학원생" → TOEIC 1건', search('대학원생'), ['toeic-speaking']);
+check('K5', '"skku pass" → SKKUPASS 제휴(훠궈) 1건', search('skku pass'), ['yonggah-hotpot']);
 
 console.log('\n[3] 종료 임박 표시 (훠궈 종료일 2026-11-30)');
 const hotpot = data.find((b) => b.id === 'yonggah-hotpot');
