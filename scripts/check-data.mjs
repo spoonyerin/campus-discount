@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  validateBenefits, computeStatus, daysUntilEnd, uncheckedItems, formatValidity,
+  validateBenefits, computeStatus, endingSoonLabel, uncheckedItems, formatValidity,
 } from '../js/data.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -34,10 +34,10 @@ section('상태 (오늘 기준)');
 const now = new Date();
 for (const b of valid) {
   const status = computeStatus(b, now);
-  const left = daysUntilEnd(b, now);
+  const soon = endingSoonLabel(b, now);
   const label = { expired: '종료', upcoming: '시작 전', needsCheck: '추가 확인 필요', ok: '정상' }[status];
   let extra = formatValidity(b.validity) || '기간 정보 없음';
-  if (left != null && left >= 0 && left <= 7) extra += ` · ⚠ 종료 ${left}일 전`;
+  if (soon) extra += ` · ⚠ ${soon}`;
   console.log(`  ${b.sourceNo} ${b.name} — ${label} (${extra}) · 마지막 확인 ${b.lastCheckedAt}`);
   // 연도 미확정이지만 종료 월·일이 7일 이내로 다가온 경우도 알려 준다
   if (b.validity && b.validity.year == null && b.validity.end) {
@@ -52,7 +52,7 @@ for (const b of valid) {
 // 3) 미확인 항목
 section('추가 확인이 필요한 항목');
 for (const b of valid) {
-  const items = uncheckedItems(b);
+  const items = uncheckedItems(b, now);
   if (!items.length) continue;
   console.log(`  ${b.sourceNo} ${b.name}`);
   items.forEach((i) => console.log(`    - ${i}`));

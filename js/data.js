@@ -94,6 +94,9 @@ export function validateBenefits(list) {
       if (b.media.image && isEmpty(b.media.imageAlt)) itemErrors.push('media.image가 있으면 media.imageAlt가 필요합니다');
     }
     if (b.unverified != null && !Array.isArray(b.unverified)) itemErrors.push('unverified는 배열이어야 합니다');
+    if (b.keywords != null && !(Array.isArray(b.keywords) && b.keywords.every((k) => typeof k === 'string'))) {
+      itemErrors.push('keywords는 문자열 배열이어야 합니다');
+    }
 
     if (itemErrors.length) {
       itemErrors.forEach((e) => errors.push(`${where}: ${e}`));
@@ -150,6 +153,25 @@ export function daysUntilEnd(b, now = new Date()) {
   return Math.round((range.end - startOfToday(now)) / 86400000);
 }
 
+export const ENDING_SOON_DAYS = 7;
+
+/** 종료 임박(0~7일 남음) 문구. 해당 없으면 null. 카드와 상세가 같은 기준을 쓴다. */
+export function endingSoonLabel(b, now = new Date()) {
+  const left = daysUntilEnd(b, now);
+  if (left == null || left < 0 || left > ENDING_SOON_DAYS) return null;
+  return left === 0 ? '오늘 종료' : `종료 ${left}일 전`;
+}
+
+/** 연도 미확인 기간에서 올해 기준 종료일이 지났는가. 자동 종료 판정 대신 확인 안내에만 쓴다. */
+export function yearlessEndPassed(b, now = new Date()) {
+  const v = b.validity;
+  if (!v || v.year != null || !v.end) return false;
+  const today = startOfToday(now);
+  const end = mmddToDate(today.getFullYear(), v.end);
+  if (v.start && mmddToDate(today.getFullYear(), v.start) > end) return false; // 해를 넘기는 기간은 판단하지 않음
+  return today > end;
+}
+
 function mmddLabel(mmdd) {
   const [m, d] = mmdd.split('-').map(Number);
   return `${m}/${d}`;
@@ -167,9 +189,12 @@ export function formatValidity(v) {
 }
 
 /** "추가 확인 필요" 목록: unverified 항목 + 값이 비어 있는 주요 선택 필드 */
-export function uncheckedItems(b) {
+export function uncheckedItems(b, now = new Date()) {
   const items = [];
   const seenMsg = new Set();
+  if (yearlessEndPassed(b, now)) {
+    items.push(`기간: 올해 기준 종료일(${mmddLabel(b.validity.end)})이 지났습니다. 연도와 연장 여부 확인 필요`);
+  }
   (b.unverified || []).forEach((u) => {
     const label = FIELD_LABELS[u.field] || u.field;
     const text = `${label}: ${u.message}`;
@@ -185,14 +210,17 @@ export function uncheckedItems(b) {
 
 // ----- 검색·정렬·카테고리 -----
 
+// 공백과 기호(·, -, 괄호 등)를 지워 "어학시험"이 "어학·시험"과, "kingo m"이 "KINGO-M"과 맞게 한다.
 export function normalize(s) {
-  return String(s ?? '').normalize('NFC').toLowerCase().replace(/\s+/g, '');
+  return String(s ?? '').normalize('NFC').toLowerCase().replace(/[\s\p{P}\p{S}]+/gu, '');
 }
 
 export function searchText(b) {
   return normalize([
     b.name, b.summary, b.category,
     b.discount && b.discount.label,
+    ...(b.keywords || []),
+    ...(b.target || []),
     ...(b.highlights || []),
     ...(b.locations || []).map((l) => `${l.label} ${l.address}`),
   ].filter(Boolean).join(' '));

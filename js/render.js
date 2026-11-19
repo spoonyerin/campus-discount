@@ -1,5 +1,5 @@
 // 목록·상세 렌더링 (innerHTML 대신 DOM API로 만들어 데이터 속 문자가 HTML로 해석되지 않게 한다)
-import { computeStatus, formatValidity, MSG_UNKNOWN, uncheckedItems, daysUntilEnd, isEmpty } from './data.js';
+import { computeStatus, formatValidity, MSG_UNKNOWN, uncheckedItems, endingSoonLabel, isEmpty } from './data.js';
 
 export const PLACEHOLDER_IMG = 'assets/img/placeholder.svg';
 
@@ -72,8 +72,10 @@ export function renderCategories(listEl, categories, active, total, onSelect) {
 }
 
 /** 카드에 붙는 칩: 상태 칩 + 데이터의 highlights */
-function statusChips(b, status) {
+function statusChips(b, status, now) {
   const chips = [];
+  const soon = endingSoonLabel(b, now);
+  if (soon) chips.push(el('li', { class: 'chip chip--warn' }, soon));
   if (status === 'expired') chips.push(el('li', { class: 'chip chip--ended' }, '종료'));
   if (status === 'upcoming') chips.push(el('li', { class: 'chip' }, '시작 전'));
   if (status === 'needsCheck') chips.push(el('li', { class: 'chip chip--warn' }, '추가 확인 필요'));
@@ -93,7 +95,7 @@ export function renderCard(b, now, onOpen) {
         el('h3', { class: 'card__name', id: `card-${b.id}` }, b.name),
         el('p', { class: 'card__summary' }, b.summary),
         validity && el('p', { class: 'card__summary' }, validity),
-        el('ul', { class: 'chips', 'aria-label': '핵심 조건' }, statusChips(b, status)),
+        el('ul', { class: 'chips', 'aria-label': '핵심 조건' }, statusChips(b, status, now)),
         el('div', { class: 'card__actions' },
           externalLink(sourceHref, b.links.official ? '공식 링크' : '출처 공지'),
           el('button', {
@@ -126,10 +128,10 @@ function fact(label, content) {
 function validityContent(b, now) {
   const text = formatValidity(b.validity);
   if (!text) return unknown();
-  const left = daysUntilEnd(b, now);
+  const soon = endingSoonLabel(b, now);
   return el('div', {},
     el('p', {}, text),
-    left != null && left >= 0 && left <= 7 && el('span', { class: 'chip chip--warn' }, left === 0 ? '오늘 종료' : `종료 ${left}일 전`),
+    soon && el('span', { class: 'chip chip--warn' }, soon),
     b.validity.note && el('span', { class: 'fact__note' }, b.validity.note));
 }
 
@@ -151,7 +153,7 @@ function contactContent(c) {
  */
 export function renderDetail(b, now, { onClose, onOpenOther, others = [] }) {
   const status = computeStatus(b, now);
-  const checks = uncheckedItems(b);
+  const checks = uncheckedItems(b, now);
 
   const links = [];
   if (b.links.apply) links.push(externalLink(b.links.apply, '신청하기', 'btn btn--navy'));

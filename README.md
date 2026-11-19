@@ -21,6 +21,7 @@ python -m http.server 5173
 
 ```powershell
 node scripts/check-data.mjs
+node scripts/test-logic.mjs   # 검색·기간 처리 시험 (기준일 고정)
 ```
 
 ## 폴더 구조
@@ -37,6 +38,7 @@ data/benefits.json    혜택 데이터 (유일한 원본)
 assets/               이미지·음성·영상 (목록은 assets/README.md)
 docs/test-checklist.md 테스트 체크리스트
 scripts/check-data.mjs 데이터·미디어 점검 스크립트
+scripts/test-logic.mjs 검색·기간 처리 시험 스크립트
 ```
 
 ## 혜택 추가·수정 (JSON만 고치면 됩니다)
@@ -44,15 +46,16 @@ scripts/check-data.mjs 데이터·미디어 점검 스크립트
 `data/benefits.json`은 배열이며 항목 하나가 혜택 하나입니다.
 
 - **필수:** `id`(영문 소문자-하이픈), `sourceNo`, `name`, `category`, `summary`, `links.source`, `lastCheckedAt`(YYYY-MM-DD)
-- **선택:** `highlights`(카드 칩), `discount`, `target`, `howTo`, `conditions`, `exceptions`, `validity`, `unverified`, `locations`, `links.official`/`links.apply`, `contact`, `media`, `sourceOwner`
+- **선택:** `highlights`(카드 칩), `keywords`(검색 별칭, 예: "토익". 혜택 내용이 아니라 같은 뜻의 검색어만), `discount`, `target`, `howTo`, `conditions`, `exceptions`, `validity`, `unverified`, `locations`, `links.official`/`links.apply`, `contact`, `media`, `sourceOwner`
 - 값이 없으면 화면에 "공식 자료에서 확인되지 않은 정보입니다"로 표시됩니다. **공지에 없는 내용은 추측해서 채우지 마세요.**
 - `validity`는 `{ "start": "MM-DD", "end": "MM-DD", "year": 2026 또는 null, "note": "…" }`
   - `year`가 숫자면 종료일이 지나면 자동으로 **종료** 배지가 붙고 목록 아래로 내려갑니다.
-  - `year`가 `null`이면 자동 종료 판정을 하지 않고 "연도 확인 필요"로 표시합니다.
+  - 종료 7일 전부터 카드와 상세에 "종료 n일 전" 칩이 붙습니다.
+  - `year`가 `null`이면 자동 종료 판정을 하지 않고 "연도 확인 필요"로 표시합니다. 올해 기준 종료일이 지나면 "추가 확인 필요" 박스에 연도·연장 확인 안내가 추가됩니다.
 - 확인되지 않은 항목은 `unverified`에 `{ "field": "validity", "message": "…" }`로 적으면 상세 상단 "추가 확인 필요" 박스에 나옵니다.
 - 카테고리 메뉴는 데이터의 `category` 값으로 자동 생성됩니다.
 - 링크에서 `utm_source` 같은 추적용 쿼리는 지워 주세요.
-- 고친 뒤 `node scripts/check-data.mjs`로 오류가 없는지 확인하고, 원문과 대조한 날짜를 `lastCheckedAt`에 적습니다.
+- 고친 뒤 `node scripts/check-data.mjs`와 `node scripts/test-logic.mjs`로 오류가 없는지 확인하고, 원문과 대조한 날짜를 `lastCheckedAt`에 적습니다.
 
 ## 미디어 넣기
 
