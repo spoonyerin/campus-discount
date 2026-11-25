@@ -151,9 +151,18 @@ main { max-width: var(--content-max); margin: 0 auto; padding: var(--sp-5) var(-
   .cat-btn[aria-pressed="true"] { background: var(--navy-soft); border-color: transparent; box-shadow: inset 4px 0 0 var(--navy); }
 }
 
-.benefits__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3); margin-bottom: var(--sp-4); }
-.benefits__title { font-size: var(--fs-xl); }
+.benefits__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2) var(--sp-3); margin-bottom: var(--sp-4); }
+.benefits__title { font-size: var(--fs-xl); white-space: nowrap; }
 .benefits__count { color: var(--text-muted); font-size: var(--fs-sm); }
+.benefits__tools { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; justify-content: flex-end; }
+.sort { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-sm); }
+.sort__label { color: var(--text-muted); font-weight: 600; }
+.sort__select {
+  min-height: 36px; padding: var(--sp-1) var(--sp-6) var(--sp-1) var(--sp-3);
+  border: 1px solid var(--border); border-radius: var(--radius-sm); background-color: var(--surface);
+  color: var(--text); font: inherit; font-size: var(--fs-sm); cursor: pointer;
+}
+.sort__select:hover { border-color: var(--navy); }
 
 /* 캠퍼스 필터 (분절 버튼) */
 .campus-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin: calc(-1 * var(--sp-2)) 0 var(--sp-4); }

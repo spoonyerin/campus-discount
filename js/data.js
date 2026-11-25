@@ -255,12 +255,34 @@ export function matchesCampus(b, campus) {
   return campus === '전체' || !b.campus || b.campus === campus;
 }
 
-/** 종료된 혜택은 아래로. 나머지는 sourceNo 순서 유지. */
-export function sortBenefits(list, now = new Date()) {
+/** 목록 정렬 방식 (값 → 화면 이름). 첫 항목이 기본값. */
+export const SORT_OPTIONS = {
+  default: '기본순',
+  endingSoon: '종료 임박순',
+  name: '가나다순',
+  recentCheck: '최근 확인순',
+};
+
+const bySourceNo = (a, b) => String(a.sourceNo).localeCompare(String(b.sourceNo));
+const KEYS = {
+  default: () => 0,
+  // 종료일이 가까운 순. 종료일을 모르는(연도 미확정 포함) 혜택은 뒤로.
+  endingSoon: (a, b, now) => {
+    const da = daysUntilEnd(a, now);
+    const db = daysUntilEnd(b, now);
+    return (da == null) - (db == null) || (da ?? 0) - (db ?? 0);
+  },
+  name: (a, b) => a.name.localeCompare(b.name, 'ko'),
+  recentCheck: (a, b) => String(b.lastCheckedAt).localeCompare(String(a.lastCheckedAt)),
+};
+
+/** 정렬: 어느 방식이든 종료된 혜택은 맨 아래. 같으면 sourceNo 순서. */
+export function sortBenefits(list, now = new Date(), mode = 'default') {
+  const key = KEYS[mode] || KEYS.default;
   return [...list].sort((a, b) => {
     const ea = computeStatus(a, now) === 'expired' ? 1 : 0;
     const eb = computeStatus(b, now) === 'expired' ? 1 : 0;
-    return ea - eb || String(a.sourceNo).localeCompare(String(b.sourceNo));
+    return ea - eb || key(a, b, now) || bySourceNo(a, b);
   });
 }
 

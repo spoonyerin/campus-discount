@@ -89,7 +89,13 @@
       <section class="benefits" aria-labelledby="benefit-list-heading">
         <div class="benefits__head">
           <h2 id="benefit-list-heading" class="benefits__title" tabindex="-1">혜택 목록</h2>
-          <p class="benefits__count" id="result-count" aria-live="polite"></p>
+          <div class="benefits__tools">
+            <p class="benefits__count" id="result-count" aria-live="polite"></p>
+            <label class="sort">
+              <span class="sort__label">정렬</span>
+              <select id="sort-select" class="sort__select"></select>
+            </label>
+          </div>
         </div>
         <div class="campus-filter" id="campus-filter" role="group" aria-label="캠퍼스">
           <span class="campus-filter__label" aria-hidden="true">캠퍼스</span>

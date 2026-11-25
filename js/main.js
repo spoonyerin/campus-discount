@@ -1,5 +1,5 @@
 // 진입점: 데이터 로드 → 목록·필터 렌더링 → 해시 라우팅(#/benefit/<id>)
-import { loadBenefits, getCategories, matchesQuery, matchesCampus, sortBenefits } from './data.js';
+import { loadBenefits, getCategories, matchesQuery, matchesCampus, sortBenefits, SORT_OPTIONS } from './data.js';
 import { renderCategories, renderList, renderDetail } from './render.js';
 import { setupVoice, stopVoice, setupHeroVideo, setupSceneImages } from './audio.js';
 
@@ -12,6 +12,7 @@ const state = {
   category: '전체',
   campus: '전체',
   query: '',
+  sort: 'default',
 };
 
 const OTHERS_MAX = 6;
@@ -25,7 +26,7 @@ const detail = {
 // ----- 목록 -----
 
 function filtered() {
-  return sortBenefits(state.benefits).filter((b) =>
+  return sortBenefits(state.benefits, new Date(), state.sort).filter((b) =>
     (state.category === '전체' || b.category === state.category)
     && matchesCampus(b, state.campus) && matchesQuery(b, state.query));
 }
@@ -164,6 +165,13 @@ async function init() {
   });
   $('search-form').addEventListener('submit', (e) => e.preventDefault());
   $('reset-filters').addEventListener('click', resetFilters);
+  const sortSelect = $('sort-select');
+  sortSelect.replaceChildren(...Object.entries(SORT_OPTIONS).map(([value, label]) => new Option(label, value)));
+  sortSelect.value = state.sort;
+  sortSelect.addEventListener('change', () => {
+    state.sort = sortSelect.value;
+    renderAll();
+  });
   $('campus-filter').addEventListener('click', (e) => {
     const btn = e.target.closest('[data-campus]');
     if (!btn) return;

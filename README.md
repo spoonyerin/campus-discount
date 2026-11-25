@@ -87,6 +87,7 @@ git add data && git commit -m "혜택 데이터 갱신" && git push
 - 확인되지 않은 항목은 `unverified`에 `{ "field": "validity", "message": "…" }`로 적으면 상세 상단 "추가 확인 필요" 박스에 나옵니다.
 - 카테고리 메뉴는 데이터의 `category` 값으로 자동 생성됩니다.
 - 링크에서 `utm_source` 같은 추적용 쿼리는 지워 주세요.
+- 목록 정렬은 기본순(근거 번호)·종료 임박순·가나다순·최근 확인순 중에서 고를 수 있고, 종료된 혜택은 항상 맨 아래로 갑니다. 정렬 이름을 바꾸거나 추가하려면 `js/data.js`의 `SORT_OPTIONS`를 고칩니다.
 - `campus`는 `"인사캠"`·`"자과캠"`·`null`. 값이 있으면 카드에 "○○ 한정" 칩이 붙고 캠퍼스 필터에 반영됩니다.
 - 고친 뒤 `node scripts/check-data.mjs`와 `node scripts/test-logic.mjs`로 오류가 없는지 확인하고, 원문과 대조한 날짜를 `lastCheckedAt`에 적습니다.
 

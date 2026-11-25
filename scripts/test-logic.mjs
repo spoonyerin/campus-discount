@@ -108,6 +108,27 @@ check('V13', '"?"·"없음"은 빈 값, 연도 숫자는 값', [sheet.isBlank('?
 check('V14', '날짜 표기 여러 형식', ['2026. 8. 14', '2026.11.22', '12/31', '2026-03'].map((s) => sheet.parseDate(s)),
   [{ year: 2026, month: 8, day: 14 }, { year: 2026, month: 11, day: 22 }, { year: null, month: 12, day: 31 }, { year: 2026, month: 3, day: null }]);
 
+console.log('\n[9] 정렬 방식 (기준일 2026-11-26)');
+const sorted = (mode, d = '2026-11-26') => lib.sortBenefits(data, day(d), mode).map((b) => b.id);
+check('O1', '기본순 → 근거 번호 순', sorted('default'), ['yonggah-hotpot', 'toeic-speaking', 'balgeun-eye-clinic']);
+check('O2', '가나다순 (한글 먼저, 영문은 뒤)', sorted('name'), ['밝은성모안과', '용가회전훠궈', 'TOEIC'].map((n) => data.find((b) => b.name.startsWith(n)).id));
+check('O3', '종료 임박순 → 종료일 있는 훠궈 먼저, 종료일 모르는 혜택은 뒤', sorted('endingSoon')[0], 'yonggah-hotpot');
+const dated = [
+  { ...data[1], id: 'e1', sourceNo: '901', validity: { start: null, end: '12-31', year: 2026 } },
+  { ...data[1], id: 'e2', sourceNo: '902', validity: { start: null, end: '12-05', year: 2026 } },
+  { ...data[1], id: 'e3', sourceNo: '903', validity: null },
+  { ...data[1], id: 'e4', sourceNo: '904', validity: { start: null, end: '11-01', year: 2026 } },
+];
+check('O4', '종료 임박순 → 가까운 날짜순, 날짜 없음 뒤, 종료된 혜택 맨 아래',
+  lib.sortBenefits(dated, day('2026-11-26'), 'endingSoon').map((b) => b.id), ['e2', 'e1', 'e3', 'e4']);
+const checkedList = [
+  { ...data[0], id: 'r1', lastCheckedAt: '2026-11-10' },
+  { ...data[1], id: 'r2', lastCheckedAt: '2026-11-22' },
+];
+check('O5', '최근 확인순 → 확인일 최신 먼저', lib.sortBenefits(checkedList, day('2026-11-20'), 'recentCheck').map((b) => b.id), ['r2', 'r1']);
+check('O6', '가나다순이어도 종료된 혜택은 맨 아래 (12-01 훠궈 종료)', sorted('name', '2026-12-01').at(-1), 'yonggah-hotpot');
+check('O7', '알 수 없는 방식이면 기본순', sorted('없는방식'), sorted('default'));
+
 console.log('\n[8] 기간 표시 문구');
 check('P1', '시작일 없이 종료일만 → "~ 2026. 12. 31.까지"', lib.formatValidity({ start: null, end: '12-31', year: 2026 }), '~ 2026. 12. 31.까지');
 check('P2', '연도·시작일 없음 → "제휴 기간 ~ 11/30까지 · 연도 확인 필요"', lib.formatValidity({ start: null, end: '11-30', year: null }), '제휴 기간 ~ 11/30까지 · 연도 확인 필요');
