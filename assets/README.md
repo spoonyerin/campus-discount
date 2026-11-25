@@ -7,18 +7,42 @@
 
 | 종류 | 경로/파일명 | 형식·권장 사양 | 상태 |
 |---|---|---|---|
-| 혜택 이미지 | `img/benefits/yonggah-hotpot.webp` | WebP, 가로 800px 내외, 150KB 이하 | 미제작 |
-| 혜택 이미지 | `img/benefits/toeic-speaking.webp` | 〃 | 미제작 |
-| 혜택 이미지 | `img/benefits/balgeun-eye-clinic.webp` | 〃 | 미제작 |
+| 혜택 이미지 | `img/benefits/<혜택 id>.webp` (아래 표) | WebP, 가로 800px 내외, 150KB 이하 | 미제작 |
 | 장면 이미지 | `img/scenes/scene-1.webp` ~ `scene-4.webp` | WebP, 16:10, 150KB 이하 | 미제작 |
-| 음성 | `audio/yonggah-hotpot.mp3` | mp3, 모노, 64~96kbps, 약 20초 | 미제작 |
-| 음성 | `audio/toeic-speaking.mp3` | 〃 | 미제작 |
-| 음성 | `audio/balgeun-eye-clinic.mp3` | 〃 | 미제작 |
+| 음성 | `audio/<혜택 id>.mp3` (아래 표) | mp3, 모노, 64~96kbps, 약 20초 | 미제작 |
 | 영상 | `video/intro.mp4` | H.264/AAC, 720p, 약 40초, 10MB 이하 | 미제작 |
 | 영상 포스터 | `video/intro-poster.webp` | 영상 첫 화면 캡처 | 미제작 |
 | 영상 자막 | `video/intro.ko.vtt` | WebVTT (계획서의 영상 나레이션 4장면 기준) | **작성 완료** — 실제 영상 길이에 맞춰 시간 조정 |
 | 공유 미리보기 | `img/og.webp` | 1200×630 | 미제작 |
 | 자리표시자 | `img/placeholder.svg`, `img/favicon.svg` | 팀이 직접 작성한 SVG (외부 소스 없음) | 완료 |
+
+### 혜택별 파일 이름 (id)
+
+이미지는 `img/benefits/<id>.webp`, 음성은 `audio/<id>.mp3`로 넣습니다. 시트에서 새로 생긴 혜택의 id는 `data/sheet-map.json`에서 확인합니다.
+이미지를 넣은 뒤 `media.imageAlt`를 실제 이미지 설명으로, 음성을 넣은 뒤 `media.audioScript`에 읽은 대본을 `data/benefits.json`에 적습니다(시트 동기화 후에도 유지됨).
+
+| 번호 | 혜택 | id |
+|---|---|---|
+| 001 | 용가회전훠궈 대학로점 | `yonggah-hotpot` |
+| 002 | TOEIC Speaking 응시료 할인 | `toeic-speaking` |
+| 003 | S'PEAK X 밝은성모안과 제휴 혜택 | `balgeun-eye-clinic` |
+| 004 | 달콤정장 정장세트 대여 할인 | `dalkom-suit` |
+| 005 | 원모아 제휴병원 할인 | `wonmoa-clinics` |
+| 006 | 졸업이찌 졸업스냅 제휴 | `jolupitzi-snap` |
+| 007 | DDP 디자인스토어 할인 | `ddp-design-store` |
+| 008 | 2026학년도 SPSS 소프트웨어 라이선스 | `spss-license` |
+| 009 | S’PEAK X 시대인재LEET - 얼리버드 단체 접수 | `sdij-leet-mock` |
+| 010 | S'PEAK X 커넥츠영단기 제휴 (영단기 패키지) | `conects-ydg-hssc` |
+| 011 | 홈즈앤루팡24 오티티 보드게임 플러스 대학로점 | `holmes-lupin-boardgame` |
+| 012 | 비급여 치료 지원 | `aju-rehab-clinic` |
+| 013 | 비타민휘트니스 율전점 4:1 PT 특별 패키지 | `vitamin-fitness-pt` |
+| 014 | 커넥츠 영단기 신학기 대학생 필수 스펙 장학지원 | `conects-ydg-nsc` |
+| 015 | SHEIN(쉬인) 신규 고객 할인 이벤트 | `shein-new-customer` |
+| 016 | 프롬하츠 커피 대학로점 SKKUPASS 혜택 | `from-hearts-coffee` |
+| 017 | 서피동파 SKKUPASS 혜택 | `seopi-dongpa` |
+| 018 | 미스터포토 대학로점 SKKUPASS 혜택 | `mr-photo` |
+| 019 | 알레클라이밍 혜화점 SKKUPASS 혜택 | `alle-climbing` |
+| 020 | 노트북 무료 대여 | `laptop-rental` |
 
 ### 제작 시 주의
 - **로고·상표·실존 인물 얼굴·글자가 들어간 이미지 금지.** 글자는 HTML로 표시합니다.

@@ -36,7 +36,7 @@ for (const b of valid) {
   const status = computeStatus(b, now);
   const soon = endingSoonLabel(b, now);
   const label = { expired: '종료', upcoming: '시작 전', needsCheck: '추가 확인 필요', ok: '정상' }[status];
-  let extra = formatValidity(b.validity) || '기간 정보 없음';
+  let extra = formatValidity(b.validity) || (b.validity && b.validity.note) || '기간 정보 없음';
   if (soon) extra += ` · ⚠ ${soon}`;
   console.log(`  ${b.sourceNo} ${b.name} — ${label} (${extra}) · 마지막 확인 ${b.lastCheckedAt}`);
   // 연도 미확정이지만 종료 월·일이 7일 이내로 다가온 경우도 알려 준다

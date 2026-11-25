@@ -1,0 +1,92 @@
+[
+  {
+    "name": "달콤정장 정장세트 대여 할인",
+    "id": "dalkom-suit",
+    "sourceNo": "004"
+  },
+  {
+    "name": "원모아 제휴병원 할인",
+    "id": "wonmoa-clinics",
+    "sourceNo": "005"
+  },
+  {
+    "name": "졸업이찌 졸업스냅 제휴",
+    "id": "jolupitzi-snap",
+    "sourceNo": "006"
+  },
+  {
+    "name": "DDP 디자인스토어 할인",
+    "id": "ddp-design-store",
+    "sourceNo": "007"
+  },
+  {
+    "name": "2026학년도 SPSS 소프트웨어 라이선스",
+    "id": "spss-license",
+    "sourceNo": "008"
+  },
+  {
+    "name": "S’PEAK X 시대인재LEET - 얼리버드 단체 접수",
+    "id": "sdij-leet-mock",
+    "sourceNo": "009"
+  },
+  {
+    "name": "S'PEAK X 커넥츠영단기 제휴 (영단기 패키지)",
+    "id": "conects-ydg-hssc",
+    "sourceNo": "010"
+  },
+  {
+    "name": "S'PEAK X 밝은성모안과 제휴 혜택",
+    "id": "balgeun-eye-clinic",
+    "sourceNo": "003"
+  },
+  {
+    "name": "홈즈앤루팡24 오티티 보드게임 플러스 대학로점",
+    "id": "holmes-lupin-boardgame",
+    "sourceNo": "011"
+  },
+  {
+    "name": "비급여 치료 지원",
+    "id": "aju-rehab-clinic",
+    "sourceNo": "012"
+  },
+  {
+    "name": "비타민휘트니스 율전점 4:1 PT 특별 패키지",
+    "id": "vitamin-fitness-pt",
+    "sourceNo": "013"
+  },
+  {
+    "name": "커넥츠 영단기 신학기 대학생 필수 스펙 장학지원",
+    "id": "conects-ydg-nsc",
+    "sourceNo": "014"
+  },
+  {
+    "name": "SHEIN(쉬인) 신규 고객 할인 이벤트",
+    "id": "shein-new-customer",
+    "sourceNo": "015"
+  },
+  {
+    "name": "프롬하츠 커피 대학로점 SKKUPASS 혜택",
+    "id": "from-hearts-coffee",
+    "sourceNo": "016"
+  },
+  {
+    "name": "서피동파 SKKUPASS 혜택",
+    "id": "seopi-dongpa",
+    "sourceNo": "017"
+  },
+  {
+    "name": "미스터포토 대학로점 SKKUPASS 혜택",
+    "id": "mr-photo",
+    "sourceNo": "018"
+  },
+  {
+    "name": "알레클라이밍 혜화점 SKKUPASS 혜택",
+    "id": "alle-climbing",
+    "sourceNo": "019"
+  },
+  {
+    "name": "노트북 무료 대여",
+    "id": "laptop-rental",
+    "sourceNo": "020"
+  }
+]

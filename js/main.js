@@ -1,5 +1,5 @@
 // 진입점: 데이터 로드 → 목록·필터 렌더링 → 해시 라우팅(#/benefit/<id>)
-import { loadBenefits, getCategories, matchesQuery, sortBenefits } from './data.js';
+import { loadBenefits, getCategories, matchesQuery, matchesCampus, sortBenefits } from './data.js';
 import { renderCategories, renderList, renderDetail } from './render.js';
 import { setupVoice, stopVoice, setupHeroVideo, setupSceneImages } from './audio.js';
 
@@ -10,8 +10,11 @@ const DETAIL_RE = /^#\/benefit\/([^/?#]+)\/?$/;
 const state = {
   benefits: [],
   category: '전체',
+  campus: '전체',
   query: '',
 };
+
+const OTHERS_MAX = 6;
 
 const detail = {
   openId: null,
@@ -23,7 +26,8 @@ const detail = {
 
 function filtered() {
   return sortBenefits(state.benefits).filter((b) =>
-    (state.category === '전체' || b.category === state.category) && matchesQuery(b, state.query));
+    (state.category === '전체' || b.category === state.category)
+    && matchesCampus(b, state.campus) && matchesQuery(b, state.query));
 }
 
 function renderAll() {
@@ -33,6 +37,9 @@ function renderAll() {
     const btn = [...$('category-list').querySelectorAll('.cat-btn')].find((b) => b.getAttribute('aria-pressed') === 'true');
     if (btn) btn.focus();
   });
+  document.querySelectorAll('#campus-filter [data-campus]').forEach((btn) => {
+    btn.setAttribute('aria-pressed', String(btn.dataset.campus === state.campus));
+  });
   const items = filtered();
   renderList($('benefit-list'), items, new Date(), openFromClick);
   $('empty-state').hidden = items.length > 0;
@@ -41,6 +48,7 @@ function renderAll() {
 
 function resetFilters() {
   state.category = '전체';
+  state.campus = '전체';
   state.query = '';
   $('search-input').value = '';
   renderAll();
@@ -75,7 +83,10 @@ function showDetail(id, { autoplay }) {
 
   const dialog = $('detail');
   const content = $('detail-content');
-  const others = state.benefits.filter((x) => x.id !== id);
+  // 다른 혜택: 같은 분야를 먼저, 최대 OTHERS_MAX개
+  const rest = state.benefits.filter((x) => x.id !== id);
+  const others = [...rest.filter((x) => x.category === b.category), ...rest.filter((x) => x.category !== b.category)]
+    .slice(0, OTHERS_MAX);
   content.replaceChildren(...renderDetail(b, new Date(), {
     onClose: () => closeDetail(),
     onOpenOther: (otherId) => openFromClick(otherId),
@@ -153,6 +164,12 @@ async function init() {
   });
   $('search-form').addEventListener('submit', (e) => e.preventDefault());
   $('reset-filters').addEventListener('click', resetFilters);
+  $('campus-filter').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-campus]');
+    if (!btn) return;
+    state.campus = btn.dataset.campus;
+    renderAll();
+  });
 
   const dialog = $('detail');
   dialog.addEventListener('cancel', (e) => { e.preventDefault(); closeDetail(); }); // Esc

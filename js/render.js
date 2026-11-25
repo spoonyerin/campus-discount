@@ -1,6 +1,8 @@
 // 목록·상세 렌더링 (innerHTML 대신 DOM API로 만들어 데이터 속 문자가 HTML로 해석되지 않게 한다)
 import { computeStatus, formatValidity, MSG_UNKNOWN, uncheckedItems, endingSoonLabel, isEmpty } from './data.js';
 
+const PHONE_RE = /(0\d{1,2}-\d{3,4}-\d{4})/g;
+
 export const PLACEHOLDER_IMG = 'assets/img/placeholder.svg';
 
 /** 작은 DOM 생성 도우미: el('a', { href, class: 'x' }, '텍스트', 자식요소...) */
@@ -43,7 +45,11 @@ const ICONS = {
   '전체': '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
   '음식점': '<path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M8 7c0-1 1-1.5 1-2.5M12 7c0-1 1-1.5 1-2.5M16 7c0-1 1-1.5 1-2.5"/>',
   '어학·시험': '<path d="M4 5h11v9H8l-4 3z"/><path d="M15 9h5v8l-3-2h-6v-1"/>',
-  '의료·건강': '<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  '의료·건강': '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/><path d="M9 11h6M12 8v6"/>',
+  '카페·디저트': '<path d="M5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M9 3c0 1.5 1 1.5 1 3M13 3c0 1.5 1 1.5 1 3"/>',
+  '생활·쇼핑': '<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+  '문화·여가': '<path d="M4 7h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4z"/><path d="M14 7v12" stroke-dasharray="2 2"/>',
+  '디지털·구독': '<rect x="3" y="5" width="18" height="11" rx="1.5"/><path d="M2 19h20"/>',
   default: '<path d="M4 8h16v4a2 2 0 0 0 0 4v0H4v0a2 2 0 0 0 0-4z" transform="translate(0 -1)"/>',
 };
 function categoryIcon(name) {
@@ -79,6 +85,7 @@ function statusChips(b, status, now) {
   if (status === 'expired') chips.push(el('li', { class: 'chip chip--ended' }, '종료'));
   if (status === 'upcoming') chips.push(el('li', { class: 'chip' }, '시작 전'));
   if (status === 'needsCheck') chips.push(el('li', { class: 'chip chip--warn' }, '추가 확인 필요'));
+  if (b.campus) chips.push(el('li', { class: 'chip chip--campus' }, `${b.campus} 한정`));
   (b.highlights || []).forEach((h, i) => chips.push(el('li', { class: i === 0 ? 'chip chip--req' : 'chip' }, h)));
   return chips;
 }
@@ -94,7 +101,7 @@ export function renderCard(b, now, onOpen) {
         el('span', { class: 'tag' }, b.category),
         el('h3', { class: 'card__name', id: `card-${b.id}` }, b.name),
         el('p', { class: 'card__summary' }, b.summary),
-        validity && el('p', { class: 'card__summary' }, validity),
+        (validity || (b.validity && b.validity.note)) && el('p', { class: 'card__summary' }, validity || b.validity.note),
         el('ul', { class: 'chips', 'aria-label': '핵심 조건' }, statusChips(b, status, now)),
         el('div', { class: 'card__actions' },
           externalLink(sourceHref, b.links.official ? '공식 링크' : '출처 공지'),
@@ -127,7 +134,7 @@ function fact(label, content) {
 
 function validityContent(b, now) {
   const text = formatValidity(b.validity);
-  if (!text) return unknown();
+  if (!text) return b.validity && b.validity.note ? el('p', {}, b.validity.note) : unknown();
   const soon = endingSoonLabel(b, now);
   return el('div', {},
     el('p', {}, text),
@@ -137,14 +144,17 @@ function validityContent(b, now) {
 
 function locationsContent(locs) {
   if (isEmpty(locs)) return null;
-  return el('ul', {}, locs.map((l) => el('li', {}, el('strong', {}, l.label), ' — ', l.address)));
+  return el('ul', {}, locs.map((l) => el('li', {}, l.label && el('strong', {}, l.label), l.label && ' — ', l.address)));
 }
 
+/** 문의처 글 속 전화번호를 모두 tel: 링크로 바꾼다. 글에 번호가 없고 tel만 있으면 뒤에 붙인다. */
 function contactContent(c) {
   if (!c || (!c.tel && !c.label)) return null;
-  return el('p', {},
-    c.label, c.tel && ' ',
-    c.tel && el('a', { href: `tel:${c.tel.replace(/[^0-9+]/g, '')}` }, c.tel));
+  const tel = (n) => el('a', { href: `tel:${n.replace(/[^0-9+]/g, '')}` }, n);
+  const label = c.label || '';
+  const parts = label.split(PHONE_RE).map((part, i) => (i % 2 ? tel(part) : part));
+  const hasPhone = parts.length > 1;
+  return el('p', {}, parts, !hasPhone && c.tel && [label && ' ', tel(c.tel)]);
 }
 
 /**
@@ -216,7 +226,7 @@ export function renderDetail(b, now, { onClose, onOpenOther, others = [] }) {
       el('p', {}, `마지막 확인일 ${b.lastCheckedAt} · 최종 조건은 반드시 공식 링크에서 확인하세요.`)),
 
     others.length > 0 && el('section', { class: 'others', 'aria-labelledby': 'others-title' },
-      el('h3', { id: 'others-title' }, '다른 혜택 보기'),
+      el('h3', { id: 'others-title' }, `다른 혜택 보기${others.every((o) => o.category === b.category) ? ` (${b.category})` : ''}`),
       el('ul', {}, others.map((o) => el('li', {},
         el('button', { type: 'button', class: 'btn btn--ghost', onclick: () => onOpenOther(o.id) }, o.name))))),
   ].filter(Boolean);

@@ -5,12 +5,29 @@
     "name": "용가회전훠궈 대학로점",
     "category": "음식점",
     "summary": "탕 결제 금액 15% 할인 (평일 15시 이후·주말 전 시간대)",
-    "keywords": ["SKKUPASS", "스꾸패스", "식당", "중식"],
-    "highlights": ["실물 학생증 또는 KINGO-M 제시 필수", "추가 주문 메뉴 할인 제외"],
-    "discount": { "label": "기본 결제 금액(탕 결제 금액)의 15% 할인", "percent": 15 },
-    "target": ["성균관대학교 학부생"],
-    "howTo": ["결제 시 실물 학생증 또는 KINGO-M 제시 필수 (SKKUPASS 공통 이용 방법)"],
-    "conditions": ["평일 15시 이후, 주말 전 시간대 방문 시"],
+    "keywords": [
+      "SKKUPASS",
+      "스꾸패스",
+      "식당",
+      "중식"
+    ],
+    "highlights": [
+      "실물 학생증 또는 KINGO-M 제시 필수",
+      "추가 주문 메뉴 할인 제외"
+    ],
+    "discount": {
+      "label": "기본 결제 금액(탕 결제 금액)의 15% 할인",
+      "percent": 15
+    },
+    "target": [
+      "성균관대학교 학부생"
+    ],
+    "howTo": [
+      "결제 시 실물 학생증 또는 KINGO-M 제시 필수 (SKKUPASS 공통 이용 방법)"
+    ],
+    "conditions": [
+      "평일 15시 이후, 주말 전 시간대 방문 시"
+    ],
     "exceptions": [
       "추가 주문 메뉴는 할인 제외",
       "결제 완료 후 할인 적용 및 재결제 요청 불가",
@@ -24,10 +41,21 @@
       "note": "공지 원문: 제휴 기간 9월 1일(화) ~ 11월 30일(월). 연도는 2026년 하반기 SKKUPASS 추가편 공지(2026-08-13 게시)와 공지 속 매장 안내의 '~2026. 11. 30.(월)' 표기로 확인했습니다. SKKUPASS 자체 운영 기간(제58대 총학생회 S'PEAK 임기 종료 시까지)과는 별개입니다."
     },
     "unverified": [
-      { "field": "validity", "message": "현재 유효 여부(제휴 연장 여부) 확인 필요" },
-      { "field": "discount", "message": "'탕 결제 금액'의 산정 기준 확인 필요" }
+      {
+        "field": "validity",
+        "message": "현재 유효 여부(제휴 연장 여부) 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "'탕 결제 금액'의 산정 기준 확인 필요"
+      }
     ],
-    "locations": [{ "label": "대학로점", "address": "서울 종로구 대학로 12길 13" }],
+    "locations": [
+      {
+        "label": "대학로점",
+        "address": "서울 종로구 대학로 12길 13"
+      }
+    ],
     "links": {
       "official": null,
       "apply": null,
@@ -49,22 +77,51 @@
     "name": "TOEIC Speaking 응시료 할인",
     "category": "어학·시험",
     "summary": "단체 접수 URL로 접수하면 응시료 30% 할인 (연 1회)",
-    "keywords": ["토익", "토익스피킹", "토스", "영어 말하기 시험"],
-    "highlights": ["단체 접수 URL로 접수", "시험 당일 증빙 서류 필참"],
-    "discount": { "label": "응시료 30% 할인 (연 1회에 한함)", "percent": 30 },
-    "target": ["성균관대학교 재학 중인 학부·대학원생 (휴학생, 수료생 포함)"],
-    "howTo": ["전용 단체 접수 URL로 접수"],
-    "conditions": ["연 1회에 한함"],
+    "keywords": [
+      "토익",
+      "토익스피킹",
+      "토스",
+      "영어 말하기 시험"
+    ],
+    "highlights": [
+      "단체 접수 URL로 접수",
+      "시험 당일 증빙 서류 필참"
+    ],
+    "discount": {
+      "label": "응시료 30% 할인 (연 1회에 한함)",
+      "percent": 30
+    },
+    "target": [
+      "성균관대학교 재학 중인 학부·대학원생 (휴학생, 수료생 포함)"
+    ],
+    "howTo": [
+      "전용 단체 접수 URL로 접수"
+    ],
+    "conditions": [
+      "연 1회에 한함"
+    ],
     "exceptions": [
       "시험 당일 재학증명서·휴학증명서·수료증명서 등 서류 필참",
       "기타 사항은 job.skku.edu 공지사항, 접수 매뉴얼, 접수 시 유의사항 확인"
     ],
     "validity": null,
     "unverified": [
-      { "field": "validity", "message": "신청 기간(접수 시작·마감)과 유효기간 확인 필요" },
-      { "field": "conditions", "message": "'연 1회'의 기준 연도 확인 필요" },
-      { "field": "discount", "message": "실제 응시료와 할인 후 금액 확인 필요" },
-      { "field": "howTo", "message": "증빙 서류 제출 방식 확인 필요" }
+      {
+        "field": "validity",
+        "message": "신청 기간(접수 시작·마감)과 유효기간 확인 필요"
+      },
+      {
+        "field": "conditions",
+        "message": "'연 1회'의 기준 연도 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "실제 응시료와 할인 후 금액 확인 필요"
+      },
+      {
+        "field": "howTo",
+        "message": "증빙 서류 제출 방식 확인 필요"
+      }
     ],
     "locations": [],
     "links": {
@@ -85,41 +142,67 @@
   {
     "id": "balgeun-eye-clinic",
     "sourceNo": "003",
-    "name": "밝은성모안과 제휴",
+    "origin": "sheet",
+    "name": "S'PEAK X 밝은성모안과 제휴 혜택",
     "category": "의료·건강",
-    "summary": "스마일라식·투데이라섹·렌즈삽입술 제휴 혜택 (내원 전 신청 필수)",
-    "keywords": ["안과 수술", "시력교정", "라식", "라섹"],
-    "highlights": ["내원 전 신청 필수", "담당자 통해 예약해야 할인"],
+    "campus": null,
+    "summary": "시력교정술 제휴 할인 및 정밀검사, 보증 지원",
+    "keywords": [
+      "안과",
+      "라식",
+      "라섹",
+      "스마일라식",
+      "투데이라섹",
+      "렌즈삽입술",
+      "시력교정"
+    ],
+    "highlights": [],
     "discount": {
-      "label": "공지 원문: 수술비 최대 할인, 70여 가지 정밀검사비 지원 (자세한 내용은 신청 URL 참고)",
+      "label": "스마일라식/투데이라섹/렌즈삽입술 수술비 최대 할인혜택, 70여 가지 정밀검사비 지원, 수술보증서 발급",
       "percent": null
     },
-    "target": ["공지 원문: 성균관대학교 학생, 교직원, 졸업생 및 가족·지인"],
-    "howTo": [
-      "내원 전 신청 필수",
-      "방법 ① 신청 URL에서 신청",
-      "방법 ② 병원 제휴팀에 전화 또는 문자 (010-6651-2202)",
-      "반드시 담당자를 통해 예약해야 할인 가능"
+    "target": [
+      "성균관대학교 학생, 교직원, 졸업생 및 가족, 지인"
     ],
-    "conditions": ["대상 수술: 스마일라식, 투데이라섹, 렌즈삽입술"],
-    "exceptions": ["담당자를 통하지 않은 예약은 할인되지 않습니다"],
-    "validity": null,
+    "howTo": [
+      "본문 URL 접속 신청 또는 담당자 전화·문자·카카오톡(ID: oklasik) 문의·예약"
+    ],
+    "conditions": [
+      "내원 전 사전 신청 및 반드시 병원 담당자 통한 예약 필수, 예약 시 학교명 전달 필수, 검사·수술 전 렌즈 미착용 필요(소프트렌즈 3일, 난시교정용 6일, 하드렌즈 9일)"
+    ],
+    "exceptions": [
+      "검사 및 수술 당일 산동제 점안 가능 및 운전 어려움으로 대중교통 이용 권장, 도수 없는 선글라스·캡모자 지참 권장, 수술별 구체적 할인 금액은 신청 URL에서 별도 확인 필요"
+    ],
+    "validity": {
+      "start": null,
+      "end": "12-31",
+      "year": 2026
+    },
     "unverified": [
-      { "field": "discount", "message": "수술 종류별 정확한 할인율·금액 확인 필요" },
-      { "field": "validity", "message": "제휴 유효기간 확인 필요" },
-      { "field": "target", "message": "가족·지인 자격 증명 방법 확인 필요" },
-      { "field": "conditions", "message": "정밀검사비 지원 범위와 추가 비용 확인 필요" }
+      {
+        "field": "validity",
+        "message": "시작일 확인 필요"
+      }
     ],
     "locations": [
-      { "label": "강남점", "address": "서울시 강남구 테헤란로 110 캠브리지빌딩 3, 16, 17, 18층 (강남역 1번 출구)" },
-      { "label": "부산점", "address": "부산시 부산진구 중앙대로 723 5, 6층 (서면역 5번 출구)" }
+      {
+        "label": "강남점",
+        "address": "서울시 강남구 테헤란로 110 캠브리지빌딩 3,16,17,18층"
+      },
+      {
+        "label": "부산점",
+        "address": "부산시 부산진구 중앙대로 723 5,6층"
+      }
     ],
     "links": {
       "official": null,
       "apply": "https://www.oklasik.com/promotion/intranet/s_icode_g_354.html",
-      "source": "https://www.instagram.com/p/DdBiR7SH1pH/"
+      "source": "https://www.instagram.com/p/DdBiR7SH1pH/?img_index=5"
     },
-    "contact": { "label": "병원 제휴팀 (전화·문자)", "tel": "010-6651-2202" },
+    "contact": {
+      "label": "밝은성모안과 제휴팀 010-6651-2202; 카카오톡 ID: oklasik",
+      "tel": "010-6651-2202"
+    },
     "media": {
       "image": "assets/img/benefits/balgeun-eye-clinic.webp",
       "imageAlt": "밝은 진료실의 안과 검사 장비 이미지",
@@ -127,6 +210,1247 @@
       "audioScript": "밝은성모안과 제휴 혜택입니다. 공지에 따르면 성균관대학교 학생, 교직원, 졸업생과 가족, 지인이 대상이며, 스마일라식, 투데이라섹, 렌즈삽입술에 제휴 혜택이 있습니다. 할인 내용은 신청 링크에서 확인하세요. 내원 전에 신청 링크나 병원 제휴팀 전화, 문자로 꼭 먼저 신청해야 하고, 반드시 담당자를 통해 예약해야 할인받을 수 있습니다."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
-    "lastCheckedAt": "2026-11-15"
+    "postedAt": "2026-09-08",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "dalkom-suit",
+    "sourceNo": "004",
+    "origin": "sheet",
+    "name": "달콤정장 정장세트 대여 할인",
+    "category": "생활·쇼핑",
+    "campus": null,
+    "summary": "정장세트 대여 시 15% 할인",
+    "keywords": [
+      "정장 대여",
+      "면접 복장",
+      "달콤정장"
+    ],
+    "highlights": [
+      "학생증 인증 및 예약 필요"
+    ],
+    "discount": {
+      "label": "자켓·팬츠 또는 스커트·구두 구성 정장세트 대여 시 15% 할인",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 재학생 및 휴학생"
+    ],
+    "howTo": [
+      "네이버에서 달콤정장 검색 후 네이버 예약",
+      "현장에서 실물 학생증 또는 KINGO-M 인증",
+      "신청: 네이버 예약(직접 URL 확인 안 됨)"
+    ],
+    "conditions": [
+      "학생증 인증 및 예약 필요"
+    ],
+    "exceptions": [
+      "대여기간 3박 4일",
+      "취업날개 서비스의 면접용 정장 무료 이용은 별도 사업"
+    ],
+    "validity": {
+      "start": null,
+      "end": "12-31",
+      "year": 2026
+    },
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "제휴 시작일 확인 필요"
+      },
+      {
+        "field": "links",
+        "message": "직접 예약 URL 확인 필요"
+      },
+      {
+        "field": "contact",
+        "message": "문의처 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "품목별 상세 대여가 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "성북점",
+        "address": "서울 성북구 동소문로23길 8-12 3층"
+      },
+      {
+        "label": "태릉점",
+        "address": "서울 중랑구 중랑역로 244 2층"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://student.skku.edu/student/notice2.do?articleNo=62070&mode=view"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/dalkom-suit.webp",
+      "imageAlt": "달콤정장 정장세트 대여 할인 안내 이미지",
+      "audio": "assets/audio/dalkom-suit.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK(인사캠)",
+    "postedAt": "2026-02-11",
+    "lastCheckedAt": "2026-11-20"
+  },
+  {
+    "id": "wonmoa-clinics",
+    "sourceNo": "005",
+    "origin": "sheet",
+    "name": "원모아 제휴병원 할인",
+    "category": "의료·건강",
+    "campus": "인사캠",
+    "summary": "진료 분야별 최대 49% 할인",
+    "keywords": [
+      "원모아",
+      "병원",
+      "치과",
+      "피부과",
+      "의료 할인"
+    ],
+    "highlights": [],
+    "discount": {
+      "label": "치과·피부과 등 12개 진료과목 최대 49% 할인; 원모아 고객 전용 영양제 쿠폰",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 인사캠 학생 및 가족(휴학생·졸업생 가능)"
+    ],
+    "howTo": [
+      "원모아 앱·카카오 채널·전화로 예약하고 인사캠 총학생회 소속 등록 또는 고지"
+    ],
+    "conditions": [
+      "예약 시 성균관대학교 인문사회과학캠퍼스 총학생회 명칭 고지 필요"
+    ],
+    "exceptions": [
+      "최대 할인율은 모든 진료에 동일 적용되지 않음",
+      "실제 조건은 원모아에서 개별 확인"
+    ],
+    "validity": {
+      "start": "01-01",
+      "end": "12-31",
+      "year": 2026
+    },
+    "unverified": [
+      {
+        "field": "discount",
+        "message": "개별 진료·병원별 실제 할인율 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "대상 병원의 현재 예약 가능 여부 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "전국 1000여 개 제휴병원(병원별 상세 위치 별도 확인)"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": "https://m.site.naver.com/1ZzsZ",
+      "source": "https://student.skku.edu/student/notice2.do?articleNo=65874&mode=view"
+    },
+    "contact": {
+      "label": "02-2088-0655",
+      "tel": "02-2088-0655"
+    },
+    "media": {
+      "image": "assets/img/benefits/wonmoa-clinics.webp",
+      "imageAlt": "원모아 제휴병원 할인 안내 이미지",
+      "audio": "assets/audio/wonmoa-clinics.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK(인사캠)",
+    "postedAt": "2026-08-18",
+    "lastCheckedAt": "2026-11-20"
+  },
+  {
+    "id": "jolupitzi-snap",
+    "sourceNo": "006",
+    "origin": "sheet",
+    "name": "졸업이찌 졸업스냅 제휴",
+    "category": "문화·여가",
+    "campus": null,
+    "summary": "졸업스냅 촬영 최대 20% 할인가",
+    "keywords": [
+      "졸업스냅",
+      "졸업이찌",
+      "스냅사진",
+      "학위복"
+    ],
+    "highlights": [],
+    "discount": {
+      "label": "졸업스냅 최대 20% 할인; 학위복 무료 대여; 단체사진 추가 완성본 제공",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 학생"
+    ],
+    "howTo": [
+      "졸업이찌 카카오톡 채널을 통해 제휴 스냅 예약 문의"
+    ],
+    "conditions": [
+      "포트폴리오 이용 동의 시 인원당 보정본 2~3매 추가"
+    ],
+    "exceptions": [
+      "학사복 S·M 각 1벌 및 석사복 M 1벌 대여",
+      "상품별 할인 수준은 카드뉴스 확인"
+    ],
+    "validity": {
+      "start": null,
+      "end": "11-30",
+      "year": 2026
+    },
+    "unverified": [
+      {
+        "field": "discount",
+        "message": "촬영 상품별 정확한 할인가 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "제휴 시작일 확인 필요"
+      },
+      {
+        "field": "locations",
+        "message": "구체적 촬영 장소 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "캠퍼스 스냅 촬영(구체적인 장소는 원문에 없음)"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": "http://pf.kakao.com/_eQfBn",
+      "source": "https://student.skku.edu/student/notice2.do?articleNo=67887&mode=view"
+    },
+    "contact": {
+      "label": "카카오톡 채널 '졸업이찌'",
+      "tel": null
+    },
+    "media": {
+      "image": "assets/img/benefits/jolupitzi-snap.webp",
+      "imageAlt": "졸업이찌 졸업스냅 제휴 안내 이미지",
+      "audio": "assets/audio/jolupitzi-snap.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK(인사캠)",
+    "postedAt": "2026-11-16",
+    "lastCheckedAt": "2026-11-20"
+  },
+  {
+    "id": "ddp-design-store",
+    "sourceNo": "007",
+    "origin": "sheet",
+    "name": "DDP 디자인스토어 할인",
+    "category": "생활·쇼핑",
+    "campus": null,
+    "summary": "디자인학과 학생 대상 제품 10% 할인",
+    "keywords": [
+      "DDP",
+      "디자인스토어",
+      "디자인학과",
+      "쇼핑"
+    ],
+    "highlights": [
+      "디자인학과 소속 학생만 대상"
+    ],
+    "discount": {
+      "label": "DDP 디자인스토어 제품 10% 할인(일부 품목 제외 가능)",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 예술대학 디자인학과 재학생 및 대학원생"
+    ],
+    "howTo": [
+      "현장 결제 시 모바일 또는 실물 학생증 제시",
+      "신청: 현장 결제(별도 신청 링크 없음)"
+    ],
+    "conditions": [
+      "디자인학과 소속 학생만 대상"
+    ],
+    "exceptions": [
+      "일부 품목 할인 제외 가능",
+      "타 학과 학생에게는 적용 근거 없음"
+    ],
+    "validity": {
+      "start": "05-07",
+      "end": "12-31",
+      "year": 2026
+    },
+    "unverified": [
+      {
+        "field": "discount",
+        "message": "할인 제외 품목 상세 목록 확인 필요"
+      },
+      {
+        "field": "contact",
+        "message": "문의처 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "서울 DDP 디자인마켓 내 DDP 디자인스토어"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://design.skku.edu/design/event.do?article.offset=100&articleLimit=10&articleNo=217440&mode=view&srSearchVal=2026"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/ddp-design-store.webp",
+      "imageAlt": "DDP 디자인스토어 할인 안내 이미지",
+      "audio": "assets/audio/ddp-design-store.mp3"
+    },
+    "sourceOwner": "성균관대학교 디자인학과",
+    "postedAt": "2026-05-08",
+    "lastCheckedAt": "2026-11-20"
+  },
+  {
+    "id": "spss-license",
+    "sourceNo": "008",
+    "origin": "sheet",
+    "name": "2026학년도 SPSS 소프트웨어 라이선스",
+    "category": "디지털·구독",
+    "campus": null,
+    "summary": "수업용 SPSS 통계 소프트웨어 라이선스 이용",
+    "keywords": [
+      "SPSS",
+      "통계",
+      "소프트웨어",
+      "무료 SW"
+    ],
+    "highlights": [
+      "계약기간 내 수업용으로 이용"
+    ],
+    "discount": {
+      "label": "SPSS 30 Ver, AMOS 30 Ver 수업용 대여",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 재학 중인 SPSS SW를 사용하는 과목의 수강 학생"
+    ],
+    "howTo": [
+      "신청서 작성 후 접수해 주시면, 정보통신팀에서 원격으로 설치 지원",
+      "신청: 홈페이지에서 신청서 다운로드"
+    ],
+    "conditions": [
+      "계약기간 내 수업용으로 이용"
+    ],
+    "exceptions": [
+      "동시접속자수(160User) 초과시 접속 제한 => 사용 후 필히 로그아웃"
+    ],
+    "validity": {
+      "start": "08-01",
+      "end": "07-31",
+      "year": 2026
+    },
+    "unverified": [],
+    "locations": [
+      {
+        "label": "",
+        "address": "온라인 이용"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://enc.skku.edu/biotech/notice_total.do?mode=view&link=&viewBoardId=138886&itemId=160881"
+    },
+    "contact": {
+      "label": "인사캠 PC운영실(02-760-1258) / 자과캠(031-290-5225)",
+      "tel": "02-760-1258"
+    },
+    "media": {
+      "image": "assets/img/benefits/spss-license.webp",
+      "imageAlt": "2026학년도 SPSS 소프트웨어 라이선스 안내 이미지",
+      "audio": "assets/audio/spss-license.mp3"
+    },
+    "sourceOwner": "성균관대학교 생명공학대학 공지사항 통합공지",
+    "postedAt": "2026-07-23",
+    "lastCheckedAt": "2026-11-21"
+  },
+  {
+    "id": "sdij-leet-mock",
+    "sourceNo": "009",
+    "origin": "sheet",
+    "name": "S’PEAK X 시대인재LEET - 얼리버드 단체 접수",
+    "category": "어학·시험",
+    "campus": null,
+    "summary": "시대인재 LEET 모의고사 총 10회차 정가 대비 최대 얼리버드 할인",
+    "keywords": [
+      "리트",
+      "모의고사",
+      "시대인재"
+    ],
+    "highlights": [],
+    "discount": {
+      "label": "총 10회차 비수강생 패키지 정가 대비 약 47%할인",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 재학생, 휴학생, 졸업생"
+    ],
+    "howTo": [
+      "제휴 대학 전용 신청 페이지 신청"
+    ],
+    "conditions": [
+      "제휴 대학 대상자 신청 정보 입력 및 학생증 or 재학/졸업 증명서 업로드"
+    ],
+    "exceptions": [
+      "선착순 마감, 인증 실패 시 별도 연락 없음, 현장 응시만 가능"
+    ],
+    "validity": {
+      "start": "10-29",
+      "end": "12-16",
+      "year": 2026
+    },
+    "unverified": [],
+    "locations": [
+      {
+        "label": "",
+        "address": "현장응시만 가능"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": "https://m.sdijleet.com/event/2026/mock2028_affiliate_univ",
+      "source": "https://www.instagram.com/p/DfET8aFH4tv/?img_index=4"
+    },
+    "contact": {
+      "label": "시대인재LEET 고객센터 (02-508-3359)",
+      "tel": "02-508-3359"
+    },
+    "media": {
+      "image": "assets/img/benefits/sdij-leet-mock.webp",
+      "imageAlt": "S’PEAK X 시대인재LEET - 얼리버드 단체 접수 안내 이미지",
+      "audio": "assets/audio/sdij-leet-mock.mp3"
+    },
+    "sourceOwner": "성균관대학교 인문사회과학캠퍼스총학생회 S’PEAK 제휴 계정",
+    "postedAt": "2026-10-29",
+    "lastCheckedAt": "2026-11-21"
+  },
+  {
+    "id": "conects-ydg-hssc",
+    "sourceNo": "010",
+    "origin": "sheet",
+    "name": "S'PEAK X 커넥츠영단기 제휴 (영단기 패키지)",
+    "category": "어학·시험",
+    "campus": "인사캠",
+    "summary": "대학생 필수스펙 90% 장학 지원",
+    "keywords": [
+      "커넥츠영단기",
+      "토익",
+      "토스",
+      "오픽",
+      "OPIc",
+      "컴활",
+      "NCS",
+      "한국사",
+      "JLPT",
+      "HSK",
+      "자격증",
+      "어학"
+    ],
+    "highlights": [
+      "인문사회과학캠퍼스 재학생 한정"
+    ],
+    "discount": {
+      "label": "총 수강료 365,000원, 토익 장학금 20만원, 응시료 50% 지원, 영어, 중국어, 일본어 및 추가 선택 프로그램 강의 및 교재 지원",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 인문사회과학캠퍼스 재학생 (제휴대학 재학생 한정)"
+    ],
+    "howTo": [
+      "수강 희망 프로그램 구글폼 통해 신청"
+    ],
+    "conditions": [
+      "인문사회과학캠퍼스 재학생 한정",
+      "최태성 한국사 강의·교재 지원은 선착순 5명 한정"
+    ],
+    "exceptions": [
+      "지원 인원 충족 시 수강 신청 조기 마감"
+    ],
+    "validity": null,
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "시작일 및 종료일 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "온라인 이용"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": "https://forms.gle/id4wCBVhEv5xsDwx6",
+      "source": "https://www.instagram.com/p/DeLqkD8nwuh/"
+    },
+    "contact": {
+      "label": "카카오톡 챗봇(주식회사 한솔에듀테크)",
+      "tel": null
+    },
+    "media": {
+      "image": "assets/img/benefits/conects-ydg-hssc.webp",
+      "imageAlt": "S'PEAK X 커넥츠영단기 제휴 (영단기 패키지) 안내 이미지",
+      "audio": "assets/audio/conects-ydg-hssc.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
+    "postedAt": "2026-10-07",
+    "lastCheckedAt": "2026-11-21"
+  },
+  {
+    "id": "holmes-lupin-boardgame",
+    "sourceNo": "011",
+    "origin": "sheet",
+    "name": "홈즈앤루팡24 오티티 보드게임 플러스 대학로점",
+    "category": "문화·여가",
+    "campus": null,
+    "summary": "보드게임카페 2시간 이상 이용 시 쿠폰 할인",
+    "keywords": [
+      "홈즈앤루팡",
+      "보드게임",
+      "보드게임카페",
+      "오티티",
+      "OTT",
+      "닌텐도",
+      "플스"
+    ],
+    "highlights": [],
+    "discount": {
+      "label": "2시간 이상 이용 시 10% 할인 쿠폰 발급",
+      "percent": null
+    },
+    "target": [],
+    "howTo": [
+      "1) [홈즈앤루팡24] 앱 회원가입(본인 이름 기재) → 2) 카카오톡 채널로 학생증 사진·가입 휴대폰 번호 전송 → 3) 확인 완료 후 해당 번호로 쿠폰 발급(앱 결제 가능)"
+    ],
+    "conditions": [
+      "2시간 이상 이용 시 사용 가능, 월~목요일에만 사용 가능, 평일 22시 이후 순차 발급"
+    ],
+    "exceptions": [
+      "주말/공휴일 및 당일 쿠폰 발급 불가, 5개 룸 제외(5, 6, 10, 11, 12번 룸)"
+    ],
+    "validity": null,
+    "unverified": [
+      {
+        "field": "target",
+        "message": "구체 적용 대상 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "시작일 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "쿠폰 유효기간 및 사용 횟수 제한 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "서울 종로구 창경궁로 236 4층"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://www.instagram.com/p/DcATaVhn8QI/?img_index=6"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/holmes-lupin-boardgame.webp",
+      "imageAlt": "홈즈앤루팡24 오티티 보드게임 플러스 대학로점 안내 이미지",
+      "audio": "assets/audio/holmes-lupin-boardgame.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
+    "postedAt": "2026-08-14",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "aju-rehab-clinic",
+    "sourceNo": "012",
+    "origin": "sheet",
+    "name": "비급여 치료 지원",
+    "category": "의료·건강",
+    "campus": null,
+    "summary": "신장분사치료/체외충격파 1만 원 할인",
+    "keywords": [
+      "아주편한재활의학과",
+      "병원",
+      "재활의학과",
+      "체외충격파",
+      "신장분사치료"
+    ],
+    "highlights": [
+      "내원 전 확인 필수"
+    ],
+    "discount": {
+      "label": "신장분사치료/체외충격파 1만 원 할인",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 학생, 교직원 및 가족"
+    ],
+    "howTo": [
+      "학생증, 교직원 확인증 지참하여 방문 후 원무 접수 시 확인"
+    ],
+    "conditions": [
+      "내원 전 확인 필수"
+    ],
+    "exceptions": [],
+    "validity": null,
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "제휴 시작일 및 종료일 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "할인 적용 횟수 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "다른 할인과 중복 가능 여부 확인 필요"
+      },
+      {
+        "field": "target",
+        "message": "가족의 혜택 이용 시 증빙 방법 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "두 치료 각각에 대한 할인 적용 방식 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "아주편한재활의학과의원",
+        "address": "경기도 수원시 장안구 서부로 2149, 성균관대 복합 역사 3층, 4층"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": "http://agrm.co.kr/",
+      "source": "https://student.skku.edu/student/promotion.do?mode=view&articleNo=67193&article.offset=0&articleLimit=9"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/aju-rehab-clinic.webp",
+      "imageAlt": "비급여 치료 지원 안내 이미지",
+      "audio": "assets/audio/aju-rehab-clinic.mp3"
+    },
+    "sourceOwner": "성균관대학교 제58대 총학생회 S’PEAK",
+    "postedAt": "2026-10-13",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "vitamin-fitness-pt",
+    "sourceNo": "013",
+    "origin": "sheet",
+    "name": "비타민휘트니스 율전점 4:1 PT 특별 패키지",
+    "category": "의료·건강",
+    "campus": null,
+    "summary": "4:1 PT 10회 35만 원 → 17만 5천 원",
+    "keywords": [
+      "비타민휘트니스",
+      "비타민피트니스",
+      "헬스장",
+      "PT",
+      "피티",
+      "그룹PT",
+      "운동"
+    ],
+    "highlights": [],
+    "discount": {
+      "label": "4:1 PT 총 10회, 정상가 350,000원 → 성대생 특별가 175,000원 (50% 할인)",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 학생"
+    ],
+    "howTo": [
+      "총학생회 인스타그램 프로필의 신청 링크를 통해 신청",
+      "신청: 총학생회의 인스타그램 링크트리"
+    ],
+    "conditions": [
+      "월요일, 목요일 주 2회 진행, 오전 10시 2팀, 오후 5시 3팀, 회당 최대 4명, 총 20명 선착순 모집"
+    ],
+    "exceptions": [
+      "헬스장 이용권은 패키지 금액에 포함되지 않음. 선착순 20명 모집으로 조기 마감될 수 있음. 자세한 신청 및 세부 안내는 신청 링크 확인 필요"
+    ],
+    "validity": null,
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "제휴 시작일 및 종료일 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "현재 모집 진행 여부 확인 필요"
+      },
+      {
+        "field": "links",
+        "message": "신청 링크의 직접 주소 확인 필요"
+      },
+      {
+        "field": "conditions",
+        "message": "헬스장 이용권 별도 구매 필요 여부 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "패키지 유효기간 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "비타민휘트니스 율전점",
+        "address": "경기도 수원시 장안구 화산로233번길 46"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://student.skku.edu/student/promotion.do?mode=view&articleNo=66337&article.offset=9&articleLimit=9"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/vitamin-fitness-pt.webp",
+      "imageAlt": "비타민휘트니스 율전점 4:1 PT 특별 패키지 안내 이미지",
+      "audio": "assets/audio/vitamin-fitness-pt.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S’PEAK 자연과학캠퍼스 대외협력국",
+    "postedAt": "2026-09-01",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "conects-ydg-nsc",
+    "sourceNo": "014",
+    "origin": "sheet",
+    "name": "커넥츠 영단기 신학기 대학생 필수 스펙 장학지원",
+    "category": "어학·시험",
+    "campus": "자과캠",
+    "summary": "한 달 수강료로 2년 10개월 수강, 토익 장학금 20만 원 지원",
+    "keywords": [
+      "커넥츠",
+      "영단기",
+      "토익",
+      "토익스피킹",
+      "한능검",
+      "어학강의",
+      "자격증",
+      "장학금"
+    ],
+    "highlights": [
+      "한정 인원 지원, 제휴대학 학생 대상"
+    ],
+    "discount": {
+      "label": "① 한 달 수강료로 2년 10개월 수강 가능 ② 토익, 토익스피킹, 한능검, 영어회화, 일본어, 중국어, IT 관련 자격증 강의 제공 ③ 토익 성적 장학금 20만 원 현금 지급 ④ 토익 응시료 50% 지원 ⑤ 토익 수준별 교재 5권 및 고득점 자료 제공 ⑥ 한능검 심화 교재 및 강의 추가 지원 ⑦ 개인별 단독 패키지 구성",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 자연과학캠퍼스 학생"
+    ],
+    "howTo": [
+      "구글폼 신청 링크를 통해 접수"
+    ],
+    "conditions": [
+      "한정 인원 지원, 제휴대학 학생 대상"
+    ],
+    "exceptions": [
+      "지원 인원 제한 있음. 장학금 지급 및 응시료 지원의 세부 조건은 공지에 명시되지 않음"
+    ],
+    "validity": null,
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "제휴 시작일 및 종료일 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "현재 신청 가능 여부 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "정확한 수강료 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "토익 장학금 20만 원 지급 조건 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "토익 응시료 50% 지원 기준 확인 필요"
+      },
+      {
+        "field": "target",
+        "message": "모집 인원 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "패키지별 세부 구성 확인 필요"
+      }
+    ],
+    "locations": [],
+    "links": {
+      "official": null,
+      "apply": "https://forms.gle/TsLRscDbB9gNyS4Q8",
+      "source": "https://student.skku.edu/student/promotion.do?mode=view&articleNo=63342&article.offset=27&articleLimit=9"
+    },
+    "contact": {
+      "label": "카카오톡 챗봇: 주식회사 한솔에듀테크",
+      "tel": null
+    },
+    "media": {
+      "image": "assets/img/benefits/conects-ydg-nsc.webp",
+      "imageAlt": "커넥츠 영단기 신학기 대학생 필수 스펙 장학지원 안내 이미지",
+      "audio": "assets/audio/conects-ydg-nsc.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S’PEAK 자연과학캠퍼스 대외협력국",
+    "postedAt": "2026-04-03",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "shein-new-customer",
+    "sourceNo": "015",
+    "origin": "sheet",
+    "name": "SHEIN(쉬인) 신규 고객 할인 이벤트",
+    "category": "생활·쇼핑",
+    "campus": null,
+    "summary": "신규 고객 8만 원 이상 구매 시 65,000원 할인",
+    "keywords": [
+      "쉬인",
+      "SHEIN",
+      "온라인 쇼핑",
+      "쇼핑몰",
+      "의류",
+      "패션",
+      "할인코드"
+    ],
+    "highlights": [],
+    "discount": {
+      "label": "80,000원 이상 구매 시 65,000원 할인",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 재학생 중 최근 1년 이내 SHEIN 주문 이력이 없는 고객"
+    ],
+    "howTo": [
+      "SHEIN 앱에서 할인 코드 또는 QR코드 검색, 전용 링크 접속 후 상품 선택 및 장바구니 담기. 8만 원 이상 구매 시 할인 적용"
+    ],
+    "conditions": [
+      "최근 1년 이내 SHEIN 주문 이력이 없어야 하며, 80,000원 이상 구매해야 함"
+    ],
+    "exceptions": [
+      "최근 1년 이내 SHEIN 주문 이력이 있는 고객은 이용 불가. 할인 코드: 4a5km5xf"
+    ],
+    "validity": null,
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "제휴 시작일 및 종료일 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "현재 할인 코드 사용 가능 여부 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "다른 할인과 중복 가능 여부 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "할인 적용 상품 범위 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "할인 횟수 제한 확인 필요"
+      }
+    ],
+    "locations": [],
+    "links": {
+      "official": null,
+      "apply": "https://onelink.shein.com/31/5hv1p4gvnj8t",
+      "source": "https://student.skku.edu/student/promotion.do?mode=view&articleNo=62730&article.offset=27&articleLimit=9"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/shein-new-customer.webp",
+      "imageAlt": "SHEIN(쉬인) 신규 고객 할인 이벤트 안내 이미지",
+      "audio": "assets/audio/shein-new-customer.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK 인문사회과학캠퍼스 대외협력국",
+    "postedAt": "2026-03",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "from-hearts-coffee",
+    "sourceNo": "016",
+    "origin": "sheet",
+    "name": "프롬하츠 커피 대학로점 SKKUPASS 혜택",
+    "category": "카페·디저트",
+    "campus": null,
+    "summary": "평일 모든 음료 20% 할인",
+    "keywords": [
+      "프롬하츠",
+      "From Hearts Coffee",
+      "대학로 카페"
+    ],
+    "highlights": [
+      "학생증 인증"
+    ],
+    "discount": {
+      "label": "주중(주말, 공휴일 제외) 모든 음료 20% 할인",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 학부생"
+    ],
+    "howTo": [
+      "실물 학생증 혹은 KINGO-M 제시"
+    ],
+    "conditions": [
+      "학생증 인증"
+    ],
+    "exceptions": [
+      "주말·공휴일 제외"
+    ],
+    "validity": {
+      "start": null,
+      "end": null,
+      "year": null,
+      "note": "원문 표기 — 종료일: 제58대 총학생회 S’PEAK 임기 종료 시까지"
+    },
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "운영 시간 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "다른 할인과의 중복 가능 여부 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "서울 종로구 대학로 127"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://www.instagram.com/p/DcATaVhn8QI/"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/from-hearts-coffee.webp",
+      "imageAlt": "프롬하츠 커피 대학로점 SKKUPASS 혜택 안내 이미지",
+      "audio": "assets/audio/from-hearts-coffee.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
+    "postedAt": "2026-08-14",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "seopi-dongpa",
+    "sourceNo": "017",
+    "origin": "sheet",
+    "name": "서피동파 SKKUPASS 혜택",
+    "category": "음식점",
+    "campus": null,
+    "summary": "5만 원 이상 결제 시 5천 원 할인 또는 증정",
+    "keywords": [
+      "서피동파",
+      "Seopi Dongpa",
+      "대학로 막걸리"
+    ],
+    "highlights": [],
+    "discount": {
+      "label": "5만 원 이상 결제 시 5천 원 할인 or 막걸리 하나 이상 주문 시 막걸리 또는 음료 중 랜덤 증정",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 학부생"
+    ],
+    "howTo": [
+      "실물 학생증 혹은 KINGO-M 제시"
+    ],
+    "conditions": [
+      "5만 원 이상 결제, 또는 막걸리 하나 이상 주문"
+    ],
+    "exceptions": [],
+    "validity": {
+      "start": null,
+      "end": null,
+      "year": null,
+      "note": "원문 표기 — 종료일: 제58대 총학생회 S’PEAK 임기 종료 시까지"
+    },
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "두 혜택 중복 가능 여부 확인 필요"
+      },
+      {
+        "field": "conditions",
+        "message": "증정품 \"랜덤\"의 구체적 종류 확인 필요"
+      },
+      {
+        "field": "validity",
+        "message": "정확한 종료일 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "서울 종로구 대명길 21-5"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://www.instagram.com/p/DcATaVhn8QI/"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/seopi-dongpa.webp",
+      "imageAlt": "서피동파 SKKUPASS 혜택 안내 이미지",
+      "audio": "assets/audio/seopi-dongpa.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
+    "postedAt": "2026-08-14",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "mr-photo",
+    "sourceNo": "018",
+    "origin": "sheet",
+    "name": "미스터포토 대학로점 SKKUPASS 혜택",
+    "category": "문화·여가",
+    "campus": null,
+    "summary": "증명사진 천 원 할인, 취업 사진 8매 추가",
+    "keywords": [
+      "미스터포토",
+      "Mr. Photo",
+      "증명사진",
+      "취업사진"
+    ],
+    "highlights": [
+      "단체사진은 기본 1컷 기준"
+    ],
+    "discount": {
+      "label": "증명사진 전체 천 원 할인 + 프리미엄·취업 사진은 8매 추가 출력\" / \"단체사진 기본 1컷 기준 인당 천 원씩 할인",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 학부생"
+    ],
+    "howTo": [
+      "실물 학생증 혹은 KINGO-M 제시"
+    ],
+    "conditions": [
+      "단체사진은 기본 1컷 기준"
+    ],
+    "exceptions": [],
+    "validity": {
+      "start": null,
+      "end": null,
+      "year": null,
+      "note": "원문 표기 — 종료일: 제58대 총학생회 S’PEAK 임기 종료 시까지"
+    },
+    "unverified": [
+      {
+        "field": "conditions",
+        "message": "예약 필요 여부 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "프리미엄 사진 가격 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "서울 종로구 창경궁로 235 지하 1층"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://www.instagram.com/p/DcATaVhn8QI/"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/mr-photo.webp",
+      "imageAlt": "미스터포토 대학로점 SKKUPASS 혜택 안내 이미지",
+      "audio": "assets/audio/mr-photo.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
+    "postedAt": "2026-08-14",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "alle-climbing",
+    "sourceNo": "019",
+    "origin": "sheet",
+    "name": "알레클라이밍 혜화점 SKKUPASS 혜택",
+    "category": "문화·여가",
+    "campus": null,
+    "summary": "체험 강습 1만 원, 일일권 20%, 정규 강습 10% 할인",
+    "keywords": [
+      "알레클라이밍",
+      "Alle Climbing",
+      "클라이밍",
+      "혜화"
+    ],
+    "highlights": [
+      "학생증 인증"
+    ],
+    "discount": {
+      "label": "1일 체험 강습(강습 + 자유이용 + 암벽화 대여) 만 원 할인” / \"일일 이용권 20% 할인(중복 할인 불가)\" / \"정규 강습 등록 시 10% 할인(강습별 금액 상이)",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 학부생"
+    ],
+    "howTo": [
+      "실물 학생증 혹은 KINGO-M 제시"
+    ],
+    "conditions": [
+      "학생증 인증"
+    ],
+    "exceptions": [
+      "일일 이용권 20% 할인은 중복 할인 불가. 정규 강습은 강습별로 금액이 다름"
+    ],
+    "validity": {
+      "start": null,
+      "end": null,
+      "year": null,
+      "note": "원문 표기 — 종료일: 제58대 총학생회 S’PEAK 임기 종료 시까지"
+    },
+    "unverified": [
+      {
+        "field": "discount",
+        "message": "강습별 금액 확인 필요"
+      },
+      {
+        "field": "discount",
+        "message": "체험 강습의 할인 후 가격 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "",
+        "address": "서울 종로구 창경궁로34길 18-5 지하 2층"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://www.instagram.com/p/DcATaVhn8QI/"
+    },
+    "contact": null,
+    "media": {
+      "image": "assets/img/benefits/alle-climbing.webp",
+      "imageAlt": "알레클라이밍 혜화점 SKKUPASS 혜택 안내 이미지",
+      "audio": "assets/audio/alle-climbing.mp3"
+    },
+    "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
+    "postedAt": "2026-08-14",
+    "lastCheckedAt": "2026-11-22"
+  },
+  {
+    "id": "laptop-rental",
+    "sourceNo": "020",
+    "origin": "sheet",
+    "name": "노트북 무료 대여",
+    "category": "디지털·구독",
+    "campus": null,
+    "summary": "대여 당일 재학생 대상 노트북 무료 대여",
+    "keywords": [
+      "노트북",
+      "노트북 대여",
+      "정보통신처",
+      "PC운영실",
+      "IT서비스"
+    ],
+    "highlights": [
+      "학기 중 누적 사용 150시간 초과 불가"
+    ],
+    "discount": {
+      "label": "무선랜 장착 노트북 PC 무료 대여(당일 대여 원칙; 1박 2일은 다음 날 오전 10시까지 반납)",
+      "percent": null
+    },
+    "target": [
+      "성균관대학교 재학생(해당 학기 등록을 마친 학부생·대학원생",
+      "대여 당일 재학생에 한함)"
+    ],
+    "howTo": [
+      "GLS 로그인 후 정보광장-IT서비스-노트북대여신청에서 예약",
+      "방문 시 학생증과 신분증 제시 및 서약서 작성 후 수령",
+      "신청: GLS 정보광장-IT서비스-노트북대여신청(직접 URL 확인 안 됨)"
+    ],
+    "conditions": [
+      "학기 중 누적 사용 150시간 초과 불가",
+      "평일 09:00~17:00 대여(12:00~13:00 제외)"
+    ],
+    "exceptions": [
+      "분실·손상 시 실비 전액 부담",
+      "반납 지연 1회 시 1개월 대여 정지",
+      "예약 취소 없이 불참하면 반납지연 1회와 동일 처리"
+    ],
+    "validity": null,
+    "unverified": [
+      {
+        "field": "validity",
+        "message": "시작일·종료일(상시 운영 여부) 확인 필요"
+      },
+      {
+        "field": "conditions",
+        "message": "대여 가능 기종·수량 확인 필요"
+      },
+      {
+        "field": "links",
+        "message": "GLS 직접 URL 확인 필요"
+      }
+    ],
+    "locations": [
+      {
+        "label": "인사캠",
+        "address": "다산경제관 4층 PC운영실 32424호"
+      },
+      {
+        "label": "자과캠",
+        "address": "제2공학관 27동 4층 PC운영실 27421호"
+      }
+    ],
+    "links": {
+      "official": null,
+      "apply": null,
+      "source": "https://www.skku.edu/skku/campus/IT_service/it_service04.do"
+    },
+    "contact": {
+      "label": "인사캠 PC운영실 02-760-1258; 자과캠 PC운영실 031-299-6215",
+      "tel": "02-760-1258"
+    },
+    "media": {
+      "image": "assets/img/benefits/laptop-rental.webp",
+      "imageAlt": "노트북 무료 대여 안내 이미지",
+      "audio": "assets/audio/laptop-rental.mp3"
+    },
+    "sourceOwner": "성균관대학교 정보통신처(대표홈페이지 IT서비스)",
+    "postedAt": null,
+    "lastCheckedAt": "2026-11-26"
   }
 ]

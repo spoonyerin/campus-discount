@@ -34,14 +34,46 @@ js/main.js            진입점, 검색·필터, 라우팅, 상세 열기/닫기
 js/data.js            JSON 로딩·스키마 검증·상태(종료/추가 확인 필요) 계산
 js/render.js          목록 카드·상세 패널 렌더링
 js/audio.js           음성 안내·안내 영상 재생 제어
-data/benefits.json    혜택 데이터 (유일한 원본)
+data/benefits.json    혜택 데이터 (화면이 읽는 파일, 시트에서 생성)
+data/sheet-map.json   시트 행 ↔ 혜택 id·근거 번호 고정표
 assets/               이미지·음성·영상 (목록은 assets/README.md)
 docs/test-checklist.md 테스트 체크리스트
 scripts/check-data.mjs 데이터·미디어 점검 스크립트
-scripts/test-logic.mjs 검색·기간 처리 시험 스크립트
+scripts/test-logic.mjs 검색·기간·시트 변환 시험 스크립트 (시험용 사본 scripts/fixtures/ 사용)
+scripts/sync-sheet.mjs 구글 시트 → benefits.json 변환
+scripts/sheet-lib.mjs  시트 행 변환 규칙
+.github/workflows/sync-sheet.yml  GitHub에서 버튼으로 시트 동기화
 ```
 
-## 혜택 추가·수정 (JSON만 고치면 됩니다)
+## 혜택 데이터 갱신 (구글 시트 → 사이트)
+
+혜택 정보는 팀 구글 시트에서 관리합니다. DB는 쓰지 않습니다. 시트를 고친 뒤 아래 둘 중 하나로 반영합니다.
+
+**A. 내 컴퓨터에서**
+```powershell
+node scripts/sync-sheet.mjs --dry-run   # 무엇이 바뀌는지만 확인
+node scripts/sync-sheet.mjs             # data/benefits.json 다시 만들기
+node scripts/check-data.mjs             # 게시 전 점검
+git add data && git commit -m "혜택 데이터 갱신" && git push
+```
+
+**B. GitHub에서 버튼으로** — 저장소 **Actions → 시트 → 혜택 데이터 동기화 → Run workflow**.
+시트를 내려받아 변환·점검하고, 오류가 없을 때만 `data/` 변경을 커밋합니다. 커밋되면 Pages가 다시 배포됩니다.
+(매일 자동 실행은 워크플로 파일의 `schedule` 주석을 풀면 켜집니다. 원문 대조 전 내용이 바로 공개될 수 있으니 팀 확인 절차를 정한 뒤 켜세요.)
+
+**시트 작성 규칙**
+- 시트 공유는 "링크가 있는 모든 사용자: 보기"로 둡니다(내려받기에 필요). 조사자 열은 사이트에 나가지 않습니다.
+- 첫 행 머리글(열 이름)은 바꾸지 않습니다. 바뀌면 변환이 멈춥니다.
+- 여러 값은 `;`로 나눕니다(대상·이용 방법·조건·제외·유의사항·장소). 검색 별칭은 `,`로 나눕니다.
+- 날짜는 `2026-11-30`처럼 쓰는 것이 가장 안전합니다. `11월 30일`, `2026. 11. 30`, `11/30`도 읽습니다. 모르면 `?`나 비워 둡니다.
+- 분야는 음식점·카페·디저트·생활·쇼핑·문화·여가·의료·건강·어학·시험·디지털·구독 중에서 씁니다(`/`는 `·`로 바뀜).
+- 대상·조건에 "인사캠/인문사회과학캠퍼스" 또는 "자과캠/자연과학캠퍼스"만 적혀 있으면 그 캠퍼스 한정 혜택이 됩니다.
+- "확인 안 되는 것" 칸은 `;`나 `,`로 나누어 상세의 "추가 확인 필요" 상자에 그대로 나옵니다.
+- 링크의 `utm_` 같은 추적용 쿼리는 자동으로 지워집니다.
+- **혜택 이름을 바꾸면 새 혜택으로 취급**해 번호·id가 새로 붙습니다. 이름을 고쳐야 하면 `data/sheet-map.json`의 `name`도 같이 고칩니다.
+- 001 훠궈·002 TOEIC처럼 시트에 없는 항목은 `benefits.json`에 직접 쓴 내용이 유지됩니다.
+
+## benefits.json 직접 고치기 (시트에 없는 항목)
 
 `data/benefits.json`은 배열이며 항목 하나가 혜택 하나입니다.
 
@@ -55,6 +87,7 @@ scripts/test-logic.mjs 검색·기간 처리 시험 스크립트
 - 확인되지 않은 항목은 `unverified`에 `{ "field": "validity", "message": "…" }`로 적으면 상세 상단 "추가 확인 필요" 박스에 나옵니다.
 - 카테고리 메뉴는 데이터의 `category` 값으로 자동 생성됩니다.
 - 링크에서 `utm_source` 같은 추적용 쿼리는 지워 주세요.
+- `campus`는 `"인사캠"`·`"자과캠"`·`null`. 값이 있으면 카드에 "○○ 한정" 칩이 붙고 캠퍼스 필터에 반영됩니다.
 - 고친 뒤 `node scripts/check-data.mjs`와 `node scripts/test-logic.mjs`로 오류가 없는지 확인하고, 원문과 대조한 날짜를 `lastCheckedAt`에 적습니다.
 
 ## 미디어 넣기

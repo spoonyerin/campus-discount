@@ -91,6 +91,13 @@
           <h2 id="benefit-list-heading" class="benefits__title" tabindex="-1">혜택 목록</h2>
           <p class="benefits__count" id="result-count" aria-live="polite"></p>
         </div>
+        <div class="campus-filter" id="campus-filter" role="group" aria-label="캠퍼스">
+          <span class="campus-filter__label" aria-hidden="true">캠퍼스</span>
+          <button type="button" class="seg" data-campus="전체" aria-pressed="true">전체</button>
+          <button type="button" class="seg" data-campus="인사캠" aria-pressed="false">인사캠</button>
+          <button type="button" class="seg" data-campus="자과캠" aria-pressed="false">자과캠</button>
+          <span class="campus-filter__hint">특정 캠퍼스 학생만 받을 수 있는 혜택을 걸러 줘요</span>
+        </div>
 
         <!-- 데이터 로드 실패 시 표시 (JS가 꺼져 있어도 noscript로 안내) -->
         <div class="load-error" id="load-error" role="alert" hidden>

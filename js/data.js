@@ -18,8 +18,13 @@ export const FIELD_LABELS = {
   exceptions: '제외·유의사항',
   locations: '장소',
   contact: '문의',
+  links: '신청 링크',
   status: '유효 여부',
 };
+
+// 분야 메뉴 순서 (목록에 없는 분야는 뒤에 등장 순서대로 붙는다)
+export const CATEGORY_ORDER = ['음식점', '카페·디저트', '생활·쇼핑', '문화·여가', '의료·건강', '어학·시험', '디지털·구독'];
+export const CAMPUSES = ['인사캠', '자과캠'];
 
 const ID_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -93,6 +98,7 @@ export function validateBenefits(list) {
       }
       if (b.media.image && isEmpty(b.media.imageAlt)) itemErrors.push('media.image가 있으면 media.imageAlt가 필요합니다');
     }
+    if (b.campus != null && !CAMPUSES.includes(b.campus)) itemErrors.push(`campus는 ${CAMPUSES.join('·')} 또는 null이어야 합니다`);
     if (b.unverified != null && !Array.isArray(b.unverified)) itemErrors.push('unverified는 배열이어야 합니다');
     if (b.keywords != null && !(Array.isArray(b.keywords) && b.keywords.every((k) => typeof k === 'string'))) {
       itemErrors.push('keywords는 문자열 배열이어야 합니다');
@@ -182,10 +188,14 @@ export function formatValidity(v) {
   if (!v || (!v.start && !v.end)) return null;
   const s = v.start ? mmddLabel(v.start) : '';
   const e = v.end ? mmddLabel(v.end) : '';
-  if (v.year == null) return `제휴 기간 ${s} ~ ${e}까지 · 연도 확인 필요`;
+  if (v.year == null) {
+    if (!e) return `제휴 기간 ${s}부터 · 연도 확인 필요`;
+    return `제휴 기간 ${s ? `${s} ~ ` : '~ '}${e}까지 · 연도 확인 필요`;
+  }
   const range = validityRange(v);
   const fmt = (d) => `${d.getFullYear()}. ${d.getMonth() + 1}. ${d.getDate()}.`;
-  return `${range.start ? fmt(range.start) : ''} ~ ${fmt(range.end)}`;
+  if (!range) return `${v.year}년 ${s}부터`;
+  return range.start ? `${fmt(range.start)} ~ ${fmt(range.end)}` : `~ ${fmt(range.end)}까지`;
 }
 
 /** "추가 확인 필요" 목록: unverified 항목 + 값이 비어 있는 주요 선택 필드 */
@@ -231,11 +241,18 @@ export function matchesQuery(b, query) {
   return q === '' || searchText(b).includes(q);
 }
 
-/** 데이터에 존재하는 category를 등장 순서대로, 개수와 함께 */
+/** 데이터에 존재하는 category를 CATEGORY_ORDER 순서(없으면 등장 순서)로, 개수와 함께 */
 export function getCategories(list) {
   const map = new Map();
   list.forEach((b) => map.set(b.category, (map.get(b.category) || 0) + 1));
-  return [...map].map(([name, count]) => ({ name, count }));
+  const rank = (name) => { const i = CATEGORY_ORDER.indexOf(name); return i < 0 ? CATEGORY_ORDER.length : i; };
+  return [...map].map(([name, count]) => ({ name, count }))
+    .sort((a, b) => rank(a.name) - rank(b.name)); // 안정 정렬이라 목록 밖 분야는 등장 순서 유지
+}
+
+/** 캠퍼스 필터: '전체'이거나, 캠퍼스 한정이 없는 혜택이거나, 같은 캠퍼스 한정 혜택이면 통과 */
+export function matchesCampus(b, campus) {
+  return campus === '전체' || !b.campus || b.campus === campus;
 }
 
 /** 종료된 혜택은 아래로. 나머지는 sourceNo 순서 유지. */
