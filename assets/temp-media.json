@@ -1,0 +1,242 @@
+{
+  "assets/audio/aju-rehab-clinic.mp3": {
+    "sha256": "dd0a1756769b90a88f95ba02e84f6fab421c87791c14cabf6cc396540946b85d",
+    "input": "18e01376034b27defe8985a6eb55f6682f460e60acf4fa5f736fbe89d70a66fe",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/alle-climbing.mp3": {
+    "sha256": "f70368d3f5f0c3cc39fad3d1a1bf835fab8dcca5c87bc3797b722f2093199cf7",
+    "input": "ce0522cf586a78f89683680c371959cc636bfaa0d2d8c808d6b5248f253287c8",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/balgeun-eye-clinic.mp3": {
+    "sha256": "cabc18650a0574bf6f0d2f3e8d6a1d5257a78dbce656d35f91b6cd6788383508",
+    "input": "3b1f17be58d2912be16d47c56102f1b3b6ae918b785271a0895452a5575291d9",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/conects-ydg-hssc.mp3": {
+    "sha256": "916d4c99f912f0b46bd2548c5b9a4a5ff18846bd1f80db8d0608bcf0bfdf5a42",
+    "input": "72a9bcab677496cddee8dc1cd0566c8ebfbfda13a9390690d3c2aa97a498eff9",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/conects-ydg-nsc.mp3": {
+    "sha256": "2c0b4019836b7fb4224233a8a202982804e0d7d0aef18d5a1656fe8eeed93009",
+    "input": "3c34e5466ab270886bd600a58518927c19bdf9b1f783ab79b7c9938f8238da8b",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/dalkom-suit.mp3": {
+    "sha256": "d453c1c041193a8e3b4f09f71eb232775f9a87bc892bd99d5cdff0119236512c",
+    "input": "d9062a0af88f19a0f1d0d70476d646dc3d586f8cf8901ffe4450a6ebc394d206",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/ddp-design-store.mp3": {
+    "sha256": "e8ab7155756cc8ac6b05915d3363cad66e8b488505f015f2de92d98971439d1e",
+    "input": "6f4a852596c5b71a55365c3969e8ca9e51a63997af9f7a5ed129298491ba4022",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/from-hearts-coffee.mp3": {
+    "sha256": "aaf520f2493fecdb37118372bf1e4751c7fdb98bfb555ab526c3e6a26677db1b",
+    "input": "d4c27034815aa46dd98fb068eea5e39e21fff1463208a59b4d754f9bcc25ac56",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/holmes-lupin-boardgame.mp3": {
+    "sha256": "b422824cfc139419bf62f4b98b8172fa66f5e33b206464b6d250e436ebdabbba",
+    "input": "43d5051f54a7ee48237832b89ba60a78c48cb0c404a53ad3c818a4a0a839ae2c",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/jolupitzi-snap.mp3": {
+    "sha256": "f181fd288542855e8bbe1c60a1ac3ac01bfcaac154f52954925d4ddcb2972f24",
+    "input": "c7af4e4c1652b18e5e320756acf900ee5800f4b1bb935c51cb5dc2517292d50e",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/laptop-rental.mp3": {
+    "sha256": "6e8668b3294a3724855f8b9440ed40c283dc8dbfe679ef402b1e61488954cdfe",
+    "input": "86840a02b04fe3c9afbca815ef16351f730bde17e50ab62836d88ec6a4c63155",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/mr-photo.mp3": {
+    "sha256": "a54d92f6f21007e8e48e25abb7c912aaa372f1b892114258dd387c363c081b3f",
+    "input": "57d348f5d7d2d053337ac10eba3ede872ad175a83a4c61c5535664d2b909f1b2",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/sdij-leet-mock.mp3": {
+    "sha256": "7b7ccb595d06414deb2f62c14203e0c057a41ed235e6918d1ce8de78b2303a95",
+    "input": "5b8563e213980825a74ccc5717039c1bad341eae9e84b28bc03ee43c928eacdd",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/seopi-dongpa.mp3": {
+    "sha256": "cf0d03ecc0bdb3956913e031ae1ce95d4a1c1301b902775b06c8baf31d9eed48",
+    "input": "0be5bbd1db8db16f9598c6e42ec96682b8da7680b0fef014994aee73e1ba8363",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/shein-new-customer.mp3": {
+    "sha256": "2a8bda7eb70c4e2cf58082f42e18b79f41add862474874847dd612977c8b5544",
+    "input": "d820ef5020c9d2564cfec6a305408e9dc5bed601074eb282fbe7a0ac492ed3a9",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/spss-license.mp3": {
+    "sha256": "14b34110902b79319132214fea6f726e7c9ff591c117e73e1a13e60d29ed4b07",
+    "input": "645747db099cffd32a4745a770dfb76134019ff6b6458105ce31e920c8524187",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/toeic-speaking.mp3": {
+    "sha256": "b09de5e39becb2232f841e80a48ed1abbd750de2629f416a8559a802e549a548",
+    "input": "9271646a92ff80d9bd02e1bd9c0478719b11463b3218f49cbb67efa815ae3014",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/vitamin-fitness-pt.mp3": {
+    "sha256": "743a3c115c7cfb9b1192052d75a29622c11753b57326472c803cf31858b72e8b",
+    "input": "4ebdba7789bd6af5eb14c025040086cc6938e6601d5afac33b56c47b841cd6cc",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/wonmoa-clinics.mp3": {
+    "sha256": "94bba34fced5d678ba7d05e548487027434181016c122cf827b33e289e2c9d79",
+    "input": "dc40bb6aa273647f194377c9b1457286ad49d3a3338bf73799bcc467b623417e",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/audio/yonggah-hotpot.mp3": {
+    "sha256": "a48470d4fd9095f92560d82a1455148c2105f0ed265d946e78833a8ab10d91eb",
+    "input": "cf9b5655cf60ba65b443773ab8daf80c8e700c42917da21984a6a9c14c792408",
+    "note": "Windows 기본 음성(Microsoft Heami Desktop) TTS(임시)"
+  },
+  "assets/img/benefits/aju-rehab-clinic.webp": {
+    "sha256": "22d4168f454067e34018a33567e55f34c1856475af341d31d7ca66c0f265f609",
+    "input": "01c5550b16d1af6564dfbe0355a9f12819d628fd5246befdea5e5028a2e0f69a",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/alle-climbing.webp": {
+    "sha256": "469a39b8d66e0fa81626c926d107145c19bff531fccf12aa56eff10cda24c996",
+    "input": "318579dbe97c81f936bb36b01abe1a4ac5ebbfeadd69431ead5b69b05f122ec7",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/balgeun-eye-clinic.webp": {
+    "sha256": "c1bf0a1ed2d006049688922a261a091d4b44357eddad818aff731f349eba7309",
+    "input": "10a383078e1e0db925baedf8cdf5dc83569a07ab61063758fe40bc2ac12575a0",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/conects-ydg-hssc.webp": {
+    "sha256": "d323c56f0da8a4bea76f1164deb73a5fa885411c439775b8ffcd52b16aeb978c",
+    "input": "4a72f7f4ef423d58f0ce9ef484134ec30ae08aea09b738a86e9874d348f2a9b8",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/conects-ydg-nsc.webp": {
+    "sha256": "958594c3cd31a98ffc840a3db5d127244e5d5631f694153795cc6cf6dceba12d",
+    "input": "e6386f6924aa0f2782c1600b7ae7adffccac46466c789aa01a17effe89170049",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/dalkom-suit.webp": {
+    "sha256": "cbace66243511d6ce3cd2104b8490040ccdcdde03d077ded0925461f75718d98",
+    "input": "89ceb98e933a149670b55466f6d84138a821f9ca71e2374c4b2f7801d31b0e5c",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/ddp-design-store.webp": {
+    "sha256": "7c5401520f868a62ecb36696284bdbe67dffba014425eb8f87b6e4bbc4c7b770",
+    "input": "daba85d572978f13bdf54820741da476bb94e41f30245babe8282dd5349aa342",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/from-hearts-coffee.webp": {
+    "sha256": "28afdd36511999298ad5e6de06fcc15b53e64e1bb6b959622e0c45e6a9770977",
+    "input": "8de5549f4abe0aca20d0eb0b68b3cdde799122beb2ee451bfa1f5b3856b71e67",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/holmes-lupin-boardgame.webp": {
+    "sha256": "c102260a59f3b39200e85aa72765c3b85e668642d79b0b84c6976bd110bdc4c3",
+    "input": "b169f728ff444b445e33ad996ed7130407db3fe05ad2ad864b9cbe6ae22be8b0",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/jolupitzi-snap.webp": {
+    "sha256": "bf9e23ae15e204ef4c31f515a65b594e7239c3891b1760ab0b692644017069a3",
+    "input": "e404f3ffa202dac6cd5941ce6b67fa168ce2b09e2f5439c0787b48e8b7b95c70",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/laptop-rental.webp": {
+    "sha256": "bae1e6b2b3347815aa8356c3ff6d9ebde19ebda4de47b3410ea24a64edd2acaa",
+    "input": "d742760be5a3ac78124e4ac7f7d7030ff6e2ea0a5c7faccc8eb772b94b66d499",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/mr-photo.webp": {
+    "sha256": "e34fc7bdcbc3bd127a5240d30228f0eb790c5e1b91618897f4b72a3990675834",
+    "input": "9a3ec7d344d29e06c2eb37356c1bda939c80e6ac92673e24a4432d663dd57083",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/sdij-leet-mock.webp": {
+    "sha256": "42d9d0d69e485400940615f99a7a596daa3e4dd0a2a05b7218d51165a7de92d5",
+    "input": "1187f7f9a4acc3440136b261b4f3591de7a8d84faf68ee5ca24cc154c2f554ca",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/seopi-dongpa.webp": {
+    "sha256": "4d886155a650f493ded62db9753aa3a360ecae578c4c2112849750c264d2d704",
+    "input": "7e2a5df9638aaadab4a21af2c6048e50cb799825330893aefbaf5bb1b57676ae",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/shein-new-customer.webp": {
+    "sha256": "7879fcfbd2d8902ec7b7c21c1b23a3b84850487db5ddb5da4b6dd8b7b39e635c",
+    "input": "2ed77980cc2d9b4085b5b260e263e3183595b2351a3f8a05baa8d1f4b4b977e4",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/spss-license.webp": {
+    "sha256": "935dac2f8aceb4cf3549df1f30e1c98a0e25d5f40f5b23d69d05a442accaa0a6",
+    "input": "a2f30227a7318c2ccf332a8d5ab3a1aa83a1d7ccfe208fadc071cf8a17e531b6",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/toeic-speaking.webp": {
+    "sha256": "792b716451554ead42ca4934b4a86844be4f9be8cbb82c6028a58c80a4083ec2",
+    "input": "9af58eeb40858eb09333c5d963d784016398dd1994c584d13a6078d7e06fbcd2",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/vitamin-fitness-pt.webp": {
+    "sha256": "7ee8e874587ed6e7d5f85aca43e1c95ab78390ac69ecc5993fcdce456a3b40ba",
+    "input": "d9a134d4a9c27f80e2d9e5a7fbd1c31095ccb361477adbad77c4ebc7ce1c7b21",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/wonmoa-clinics.webp": {
+    "sha256": "463d30dfb867d8f5508e8630211c313a5f57f84a1eb422e0b54f9aab30e734d0",
+    "input": "a9aac44122bfa3e5b5daa0bfea8a9a61f9a2e552d191428425966a299fbe8aa2",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/benefits/yonggah-hotpot.webp": {
+    "sha256": "bb7d7e617a98849930a5e23fd8ab6fc569fea77f348c49067253346ba9dd3de8",
+    "input": "036e378a403254b26ac95f050f673a79faa1a9fab946324477757d7fa6584ee8",
+    "note": "자동 생성 일러스트(임시)"
+  },
+  "assets/img/og.webp": {
+    "sha256": "04226b9f6fb9a677243256af4dd841d23770b069f9c772060a63a566676f4fc7",
+    "input": "b0eed6733ad26f4dcd64149b8e0774bdbe003278e408d53c6be7a09b9770eab2",
+    "note": "공유 미리보기 일러스트(임시)"
+  },
+  "assets/img/scenes/scene-1.webp": {
+    "sha256": "86651ccb7ebb796694dcec956833047d0a1a4293d4441513a0db49564f02fa8a",
+    "input": "d48cd5401f76e6aeeccebaac555370c2c623f544200cf9d8ac4b91f690f46969",
+    "note": "안내 4단계 장면 1 일러스트(임시)"
+  },
+  "assets/img/scenes/scene-2.webp": {
+    "sha256": "a5004d587a6b9549a18871db237bce0b9510ec0819c1e3933585c8f83b94ecce",
+    "input": "aec792bc3ee9b7db8504fc04b00f126c3cd72ca3130ec767a094d9e55c318a2e",
+    "note": "안내 4단계 장면 2 일러스트(임시)"
+  },
+  "assets/img/scenes/scene-3.webp": {
+    "sha256": "24c4fc66ab03900473ee2b574d0c23a0ec4fa94715415475f23a9edb4d36e715",
+    "input": "7657404c16d403478232d4d878944a7d51db891b342f4247e9526ef4aba2c146",
+    "note": "안내 4단계 장면 3 일러스트(임시)"
+  },
+  "assets/img/scenes/scene-4.webp": {
+    "sha256": "e43499a75857986b51a891a2372df3014c68e8176cc69b14221aef432b3929d4",
+    "input": "a95b4ded5bdafd69b2a86df99e05ee247606c7cf69f50ac9943233606c6b356b",
+    "note": "안내 4단계 장면 4 일러스트(임시)"
+  },
+  "assets/video/intro-poster.webp": {
+    "sha256": "7e67ed32e13b143dfcf5116e7b85c87840f37652d9e755fb85fdaf4a2fe718a8",
+    "input": "1e0bb103c1b6acdecc03045df8f4fff9175767a28468bf75a06c6e98bc118dd3",
+    "note": "영상 첫 장면(임시)"
+  },
+  "assets/video/intro.ko.vtt": {
+    "sha256": "9b6eacc53749ac35ac31674155567ddfc876df2256f8271d51a66c505f99e87e",
+    "input": "1e0bb103c1b6acdecc03045df8f4fff9175767a28468bf75a06c6e98bc118dd3",
+    "note": "영상 길이에 맞춘 자막(임시)"
+  },
+  "assets/video/intro.mp4": {
+    "sha256": "d32059b353d6ff6817cdb1d293d0aefe8ed19599855ffbb923c8311d740d8f85",
+    "input": "1e0bb103c1b6acdecc03045df8f4fff9175767a28468bf75a06c6e98bc118dd3",
+    "note": "장면 일러스트 + Windows 기본 음성(Microsoft Heami Desktop) 나레이션(임시)"
+  }
+}

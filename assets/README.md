@@ -3,17 +3,42 @@
 사이트는 아래 파일이 **없어도 정상 동작**합니다(자리표시자 이미지·4단계 안내 카드로 대체, 음성 플레이어는 숨김).
 파일을 넣으면 코드 수정 없이 자동으로 표시됩니다. 런타임에 외부 서비스를 호출하지 않습니다.
 
+## 지금 들어 있는 파일은 "임시"입니다 (2026-11-26)
+
+발표 준비 시간이 부족할 때를 대비해 아래 파일을 자동으로 만들어 두었습니다. 목록은 `assets/temp-media.json`에 있습니다.
+
+| 종류 | 만든 방법 |
+|---|---|
+| 혜택 이미지 20개, 장면 이미지 4개, 공유 이미지, 영상 포스터 | 코드로 그린 단순 일러스트(SVG → WebP). 로고·글자·인물 없음 |
+| 음성 20개 | `data/benefits.json`의 `media.audioScript`를 Windows 기본 한국어 음성(Microsoft Heami)으로 읽은 TTS |
+| 안내 영상 `intro.mp4` (약 55초) | 장면 이미지 4장 + 첫 화면 4단계 문구를 같은 TTS로 읽은 나레이션 |
+| 자막 `intro.ko.vtt` | 위 영상 길이에 맞춰 자동 계산 |
+
+**교체 방법:** 팀이 만든 파일을 **같은 경로·같은 이름으로 덮어쓰면 끝**입니다. 코드는 고치지 않습니다.
+- `node scripts/check-data.mjs`의 "미디어 파일" 목록에 `있음(임시)` / `있음(팀 제작)`으로 구분되어 나옵니다.
+- 이미지를 바꾸면 `data/benefits.json`의 그 혜택 `media.imageAlt`를 새 이미지 설명으로 고칩니다.
+- 영상을 바꿀 때는 **영상·자막을 같이** 바꿉니다(자막 시간이 영상 길이에 맞아야 함). 포스터는 영상 첫 화면 캡처로 바꿉니다.
+- 음성 대본(`audioScript`)은 시트 동기화를 해도 유지됩니다. 팀 음성을 녹음하면 실제로 읽은 대본으로 고칩니다.
+- Windows 기본 음성(SAPI)으로 만든 음성을 공개 사이트에 계속 쓸지는 발표 전에 팀이 Microsoft 이용 조건을 확인합니다. 확인이 어려우면 클로바더빙 등 계획서의 도구로 바꿉니다.
+
+**임시 파일 다시 만들기** (혜택이 늘었거나 대본·문구가 바뀌었을 때). 팀이 바꾼 파일은 건드리지 않습니다.
+```powershell
+pip install pillow pymupdf lameenc av     # 처음 한 번 (C: 공간이 부족하면 --target D:\tools\pymedia 후 $env:PYTHONPATH="D:\tools\pymedia")
+python scripts/media/make-media.py        # 바뀐 것만 생성
+python scripts/media/make-media.py --only audio   # images | audio | video 중 하나만
+```
+
 ## 넣을 파일과 규격
 
 | 종류 | 경로/파일명 | 형식·권장 사양 | 상태 |
 |---|---|---|---|
-| 혜택 이미지 | `img/benefits/<혜택 id>.webp` (아래 표) | WebP, 가로 800px 내외, 150KB 이하 | 미제작 |
-| 장면 이미지 | `img/scenes/scene-1.webp` ~ `scene-4.webp` | WebP, 16:10, 150KB 이하 | 미제작 |
-| 음성 | `audio/<혜택 id>.mp3` (아래 표) | mp3, 모노, 64~96kbps, 약 20초 | 미제작 |
-| 영상 | `video/intro.mp4` | H.264/AAC, 720p, 약 40초, 10MB 이하 | 미제작 |
-| 영상 포스터 | `video/intro-poster.webp` | 영상 첫 화면 캡처 | 미제작 |
-| 영상 자막 | `video/intro.ko.vtt` | WebVTT (계획서의 영상 나레이션 4장면 기준) | **작성 완료** — 실제 영상 길이에 맞춰 시간 조정 |
-| 공유 미리보기 | `img/og.webp` | 1200×630 | 미제작 |
+| 혜택 이미지 | `img/benefits/<혜택 id>.webp` (아래 표) | WebP, 가로 800px 내외, 150KB 이하 | 임시 |
+| 장면 이미지 | `img/scenes/scene-1.webp` ~ `scene-4.webp` | WebP, 16:10, 150KB 이하 | 임시 |
+| 음성 | `audio/<혜택 id>.mp3` (아래 표) | mp3, 모노, 64~96kbps | 임시 |
+| 영상 | `video/intro.mp4` | H.264/AAC, 720p, 10MB 이하 | 임시 |
+| 영상 포스터 | `video/intro-poster.webp` | 영상 첫 화면 캡처 | 임시 |
+| 영상 자막 | `video/intro.ko.vtt` | WebVTT, 한 큐 2줄 이하 | 임시 (영상 길이에 맞춤) |
+| 공유 미리보기 | `img/og.webp` | 1200×630 | 임시 |
 | 자리표시자 | `img/placeholder.svg`, `img/favicon.svg` | 팀이 직접 작성한 SVG (외부 소스 없음) | 완료 |
 
 ### 혜택별 파일 이름 (id)
@@ -55,5 +80,6 @@
 
 | 파일 | 제작 도구 | 생성일 | 프롬프트 요약 | 이용 조건 확인일 / 확인 내용 |
 |---|---|---|---|---|
+| 임시 파일 전체 (`assets/temp-media.json`) | 직접 작성한 SVG + Pillow·PyMuPDF(이미지), Windows 기본 음성 Microsoft Heami + LAME(음성), PyAV/FFmpeg(영상) | 2026-11-26 | 혜택·분야별 단순 일러스트, 대본은 `audioScript` 그대로 | (팀 확인 필요) / Windows 음성의 공개 사이트 사용 조건 |
 | (예) img/benefits/yonggah-hotpot.webp | (도구 이름) | YYYY-MM-DD | 훠궈 냄비와 재료, 로고·글자 없음 | YYYY-MM-DD / 공개 웹사이트 사용 가능 여부 |
 | | | | | |

@@ -64,7 +64,7 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/yonggah-hotpot.webp",
-      "imageAlt": "훠궈 냄비와 재료가 차려진 식탁 이미지",
+      "imageAlt": "김이 나는 냄비 요리 일러스트",
       "audio": "assets/audio/yonggah-hotpot.mp3",
       "audioScript": "용가회전훠궈 대학로점 제휴 혜택입니다. 성균관대학교 학부생은 평일 15시 이후와 주말 전 시간대에 기본 결제 금액, 즉 탕 결제 금액의 15퍼센트를 할인받을 수 있어요. 결제할 때 실물 학생증이나 킹고엠을 꼭 보여 주세요. 추가 주문 메뉴는 할인되지 않고, 다른 할인과 중복 적용되지 않습니다. 제휴 기간은 9월 1일부터 11월 30일까지로 안내되어 있으니, 공식 공지에서 최신 정보를 확인하세요."
     },
@@ -132,7 +132,7 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/toeic-speaking.webp",
-      "imageAlt": "헤드셋을 끼고 말하기 시험을 준비하는 학생 일러스트",
+      "imageAlt": "마이크가 달린 헤드셋 일러스트",
       "audio": "assets/audio/toeic-speaking.mp3",
       "audioScript": "토익 스피킹 응시료 할인 혜택입니다. 성균관대학교에 재학 중인 학부생과 대학원생은 휴학생과 수료생을 포함해 응시료 30퍼센트를 할인받을 수 있어요. 연 1회에 한하며, 반드시 전용 단체 접수 링크로 접수해야 합니다. 시험 당일에는 재학증명서나 휴학증명서, 수료증명서 같은 서류를 꼭 챙기세요. 접수 기간은 공식 안내에서 확인하세요."
     },
@@ -205,7 +205,7 @@
     },
     "media": {
       "image": "assets/img/benefits/balgeun-eye-clinic.webp",
-      "imageAlt": "밝은 진료실의 안과 검사 장비 이미지",
+      "imageAlt": "눈 모양 일러스트",
       "audio": "assets/audio/balgeun-eye-clinic.mp3",
       "audioScript": "밝은성모안과 제휴 혜택입니다. 공지에 따르면 성균관대학교 학생, 교직원, 졸업생과 가족, 지인이 대상이며, 스마일라식, 투데이라섹, 렌즈삽입술에 제휴 혜택이 있습니다. 할인 내용은 신청 링크에서 확인하세요. 내원 전에 신청 링크나 병원 제휴팀 전화, 문자로 꼭 먼저 신청해야 하고, 반드시 담당자를 통해 예약해야 할인받을 수 있습니다."
     },
@@ -289,8 +289,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/dalkom-suit.webp",
-      "imageAlt": "달콤정장 정장세트 대여 할인 안내 이미지",
-      "audio": "assets/audio/dalkom-suit.mp3"
+      "imageAlt": "옷걸이에 걸린 정장 재킷 일러스트",
+      "audio": "assets/audio/dalkom-suit.mp3",
+      "audioScript": "달콤정장 정장세트 대여 할인입니다. 성균관대학교 재학생과 휴학생은 자켓과 팬츠 또는 스커트, 구두로 구성된 정장세트를 대여할 때 15퍼센트 할인을 받을 수 있어요. 네이버에서 달콤정장을 검색해 예약하고, 매장에서 실물 학생증이나 킹고엠으로 인증하세요. 대여 기간은 3박 4일이며, 제휴는 2026년 12월 31일까지로 안내되어 있어요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK(인사캠)",
     "postedAt": "2026-02-11",
@@ -361,8 +362,9 @@
     },
     "media": {
       "image": "assets/img/benefits/wonmoa-clinics.webp",
-      "imageAlt": "원모아 제휴병원 할인 안내 이미지",
-      "audio": "assets/audio/wonmoa-clinics.mp3"
+      "imageAlt": "병원 십자 표시 일러스트",
+      "audio": "assets/audio/wonmoa-clinics.mp3",
+      "audioScript": "원모아 제휴병원 할인입니다. 인문사회과학캠퍼스 학생과 가족은 치과, 피부과 등 12개 진료과목에서 최대 49퍼센트 할인을 받을 수 있어요. 원모아 앱이나 카카오 채널, 전화로 예약할 때 인문사회과학캠퍼스 총학생회 소속임을 꼭 알려 주세요. 최대 할인율이 모든 진료에 똑같이 적용되지는 않으니, 실제 조건은 원모아에서 확인하세요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK(인사캠)",
     "postedAt": "2026-08-18",
@@ -436,8 +438,9 @@
     },
     "media": {
       "image": "assets/img/benefits/jolupitzi-snap.webp",
-      "imageAlt": "졸업이찌 졸업스냅 제휴 안내 이미지",
-      "audio": "assets/audio/jolupitzi-snap.mp3"
+      "imageAlt": "사진기와 학사모 일러스트",
+      "audio": "assets/audio/jolupitzi-snap.mp3",
+      "audioScript": "졸업이찌 졸업스냅 제휴 혜택입니다. 성균관대학교 학생은 졸업스냅 촬영을 최대 20퍼센트 할인받고, 학위복도 무료로 빌릴 수 있어요. 졸업이찌 카카오톡 채널로 제휴 스냅 예약을 문의하세요. 포트폴리오 이용에 동의하면 인원당 보정본을 2장에서 3장 더 받을 수 있습니다. 제휴는 11월 30일까지로 안내되어 있어요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK(인사캠)",
     "postedAt": "2026-11-16",
@@ -507,8 +510,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/ddp-design-store.webp",
-      "imageAlt": "DDP 디자인스토어 할인 안내 이미지",
-      "audio": "assets/audio/ddp-design-store.mp3"
+      "imageAlt": "쇼핑백과 가격표 일러스트",
+      "audio": "assets/audio/ddp-design-store.mp3",
+      "audioScript": "DDP 디자인스토어 할인입니다. 예술대학 디자인학과 재학생과 대학원생은 DDP 디자인스토어 제품을 10퍼센트 할인받을 수 있어요. 현장에서 결제할 때 모바일 또는 실물 학생증을 보여 주세요. 일부 품목은 할인에서 제외될 수 있고, 다른 학과 학생에게 적용된다는 근거는 없습니다."
     },
     "sourceOwner": "성균관대학교 디자인학과",
     "postedAt": "2026-05-08",
@@ -571,8 +575,9 @@
     },
     "media": {
       "image": "assets/img/benefits/spss-license.webp",
-      "imageAlt": "2026학년도 SPSS 소프트웨어 라이선스 안내 이미지",
-      "audio": "assets/audio/spss-license.mp3"
+      "imageAlt": "막대그래프가 띄워진 노트북 일러스트",
+      "audio": "assets/audio/spss-license.mp3",
+      "audioScript": "2026학년도 SPSS 소프트웨어 라이선스 안내입니다. SPSS를 쓰는 과목을 수강하는 성균관대학교 재학생은 SPSS와 AMOS 30 버전을 수업용으로 이용할 수 있어요. 신청서를 작성해 접수하면 정보통신팀이 원격으로 설치를 도와줍니다. 동시 접속자가 160명을 넘으면 접속이 제한되니, 사용 후에는 꼭 로그아웃하세요. 이용 기간은 2027년 7월 31일까지입니다."
     },
     "sourceOwner": "성균관대학교 생명공학대학 공지사항 통합공지",
     "postedAt": "2026-07-23",
@@ -631,8 +636,9 @@
     },
     "media": {
       "image": "assets/img/benefits/sdij-leet-mock.webp",
-      "imageAlt": "S’PEAK X 시대인재LEET - 얼리버드 단체 접수 안내 이미지",
-      "audio": "assets/audio/sdij-leet-mock.mp3"
+      "imageAlt": "답안지와 연필 일러스트",
+      "audio": "assets/audio/sdij-leet-mock.mp3",
+      "audioScript": "시대인재 리트 모의고사 얼리버드 단체 접수 안내입니다. 성균관대학교 재학생, 휴학생, 졸업생은 총 10회차 비수강생 패키지를 정가보다 약 47퍼센트 할인된 가격으로 신청할 수 있어요. 제휴 대학 전용 신청 페이지에서 정보를 입력하고 학생증이나 증명서를 올리면 됩니다. 선착순으로 마감되고 현장 응시만 가능해요. 신청 기간은 12월 16일까지입니다."
     },
     "sourceOwner": "성균관대학교 인문사회과학캠퍼스총학생회 S’PEAK 제휴 계정",
     "postedAt": "2026-10-29",
@@ -704,8 +710,9 @@
     },
     "media": {
       "image": "assets/img/benefits/conects-ydg-hssc.webp",
-      "imageAlt": "S'PEAK X 커넥츠영단기 제휴 (영단기 패키지) 안내 이미지",
-      "audio": "assets/audio/conects-ydg-hssc.mp3"
+      "imageAlt": "펼쳐진 책 일러스트",
+      "audio": "assets/audio/conects-ydg-hssc.mp3",
+      "audioScript": "커넥츠영단기 제휴 패키지 안내입니다. 인문사회과학캠퍼스 재학생은 토익 장학금 20만 원과 응시료 50퍼센트 지원, 그리고 영어, 중국어, 일본어 등의 강의와 교재를 지원받을 수 있어요. 수강을 원하는 프로그램을 구글폼으로 신청하세요. 지원 인원이 차면 일찍 마감될 수 있고, 신청 기간은 공지에서 확인되지 않았으니 신청 전에 확인하세요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
     "postedAt": "2026-10-07",
@@ -772,8 +779,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/holmes-lupin-boardgame.webp",
-      "imageAlt": "홈즈앤루팡24 오티티 보드게임 플러스 대학로점 안내 이미지",
-      "audio": "assets/audio/holmes-lupin-boardgame.mp3"
+      "imageAlt": "주사위 두 개 일러스트",
+      "audio": "assets/audio/holmes-lupin-boardgame.mp3",
+      "audioScript": "홈즈앤루팡24 오티티 보드게임 플러스 대학로점 혜택입니다. 2시간 이상 이용하면 10퍼센트 할인 쿠폰을 받을 수 있어요. 앱에 본인 이름으로 가입한 뒤, 카카오톡 채널로 학생증 사진과 가입한 휴대폰 번호를 보내면 확인 후 쿠폰이 발급됩니다. 쿠폰은 월요일부터 목요일까지만 쓸 수 있고, 주말과 공휴일, 당일에는 발급되지 않아요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
     "postedAt": "2026-08-14",
@@ -848,8 +856,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/aju-rehab-clinic.webp",
-      "imageAlt": "비급여 치료 지원 안내 이미지",
-      "audio": "assets/audio/aju-rehab-clinic.mp3"
+      "imageAlt": "병원 십자 표시와 심박 그래프 일러스트",
+      "audio": "assets/audio/aju-rehab-clinic.mp3",
+      "audioScript": "아주편한재활의학과의원 비급여 치료 지원 안내입니다. 성균관대학교 학생, 교직원과 가족은 신장분사치료, 체외충격파 치료에 1만 원 할인 혜택이 있어요. 학생증이나 교직원 확인증을 가지고 방문해 원무 접수 때 확인받으세요. 제휴 기간과 다른 할인과의 중복 여부는 공식 자료에서 확인되지 않았으니, 내원 전에 꼭 확인하세요."
     },
     "sourceOwner": "성균관대학교 제58대 총학생회 S’PEAK",
     "postedAt": "2026-10-13",
@@ -927,8 +936,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/vitamin-fitness-pt.webp",
-      "imageAlt": "비타민휘트니스 율전점 4:1 PT 특별 패키지 안내 이미지",
-      "audio": "assets/audio/vitamin-fitness-pt.mp3"
+      "imageAlt": "아령 일러스트",
+      "audio": "assets/audio/vitamin-fitness-pt.mp3",
+      "audioScript": "비타민휘트니스 율전점 4대 1 PT 특별 패키지입니다. 성균관대학교 학생은 4대 1 PT 10회를 정상가 35만 원에서 50퍼센트 할인된 17만 5천 원에 이용할 수 있어요. 수업은 월요일과 목요일, 주 2회 진행되고, 총 20명을 선착순으로 모집합니다. 신청은 총학생회 인스타그램 프로필의 링크로 하세요. 헬스장 이용권은 패키지 금액에 포함되지 않아요."
     },
     "sourceOwner": "제58대 총학생회 S’PEAK 자연과학캠퍼스 대외협력국",
     "postedAt": "2026-09-01",
@@ -1014,8 +1024,9 @@
     },
     "media": {
       "image": "assets/img/benefits/conects-ydg-nsc.webp",
-      "imageAlt": "커넥츠 영단기 신학기 대학생 필수 스펙 장학지원 안내 이미지",
-      "audio": "assets/audio/conects-ydg-nsc.mp3"
+      "imageAlt": "펼쳐진 책 일러스트",
+      "audio": "assets/audio/conects-ydg-nsc.mp3",
+      "audioScript": "커넥츠 영단기 신학기 장학지원 안내입니다. 자연과학캠퍼스 학생은 한 달 수강료로 2년 10개월 동안 토익, 토익스피킹, 한능검, 외국어, IT 자격증 강의를 들을 수 있어요. 토익 성적 장학금 20만 원과 토익 응시료 50퍼센트 지원도 안내되어 있습니다. 구글폼으로 신청하며, 지원 인원이 한정되어 있어요. 세부 조건은 신청 전에 확인하세요."
     },
     "sourceOwner": "제58대 총학생회 S’PEAK 자연과학캠퍼스 대외협력국",
     "postedAt": "2026-04-03",
@@ -1087,8 +1098,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/shein-new-customer.webp",
-      "imageAlt": "SHEIN(쉬인) 신규 고객 할인 이벤트 안내 이미지",
-      "audio": "assets/audio/shein-new-customer.mp3"
+      "imageAlt": "쇼핑백과 가격표 일러스트",
+      "audio": "assets/audio/shein-new-customer.mp3",
+      "audioScript": "쉬인 신규 고객 할인 이벤트입니다. 최근 1년 안에 쉬인에서 주문한 적이 없는 성균관대학교 재학생은 8만 원 이상 구매하면 6만 5천 원을 할인받을 수 있어요. 쉬인 앱에서 할인 코드나 QR코드를 검색하거나 전용 링크로 들어가 상품을 담으면 됩니다. 지금도 코드를 쓸 수 있는지는 확인되지 않았으니 결제 전에 확인하세요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 인문사회과학캠퍼스 대외협력국",
     "postedAt": "2026-03",
@@ -1156,8 +1168,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/from-hearts-coffee.webp",
-      "imageAlt": "프롬하츠 커피 대학로점 SKKUPASS 혜택 안내 이미지",
-      "audio": "assets/audio/from-hearts-coffee.mp3"
+      "imageAlt": "김이 나는 커피잔 일러스트",
+      "audio": "assets/audio/from-hearts-coffee.mp3",
+      "audioScript": "프롬하츠 커피 대학로점 스꾸패스 혜택입니다. 성균관대학교 학부생은 주중에 모든 음료를 20퍼센트 할인받을 수 있어요. 주말과 공휴일은 제외됩니다. 결제할 때 실물 학생증이나 킹고엠을 보여 주세요. 혜택 기간은 제58대 총학생회 임기 종료 시까지로 안내되어 있어요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
     "postedAt": "2026-08-14",
@@ -1225,8 +1238,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/seopi-dongpa.webp",
-      "imageAlt": "서피동파 SKKUPASS 혜택 안내 이미지",
-      "audio": "assets/audio/seopi-dongpa.mp3"
+      "imageAlt": "막걸리 병과 잔 일러스트",
+      "audio": "assets/audio/seopi-dongpa.mp3",
+      "audioScript": "서피동파 스꾸패스 혜택입니다. 성균관대학교 학부생은 5만 원 이상 결제하면 5천 원을 할인받거나, 막걸리를 하나 이상 주문하면 막걸리 또는 음료 중 하나를 랜덤으로 받을 수 있어요. 결제할 때 실물 학생증이나 킹고엠을 보여 주세요. 두 혜택을 함께 받을 수 있는지는 확인되지 않았으니 매장에 문의하세요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
     "postedAt": "2026-08-14",
@@ -1293,8 +1307,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/mr-photo.webp",
-      "imageAlt": "미스터포토 대학로점 SKKUPASS 혜택 안내 이미지",
-      "audio": "assets/audio/mr-photo.mp3"
+      "imageAlt": "사진기 일러스트",
+      "audio": "assets/audio/mr-photo.mp3",
+      "audioScript": "미스터포토 대학로점 스꾸패스 혜택입니다. 성균관대학교 학부생은 증명사진을 천 원 할인받고, 프리미엄 사진과 취업 사진은 8장을 더 출력받을 수 있어요. 단체사진은 기본 1컷 기준으로 한 사람당 천 원씩 할인됩니다. 이용할 때 실물 학생증이나 킹고엠을 보여 주세요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
     "postedAt": "2026-08-14",
@@ -1363,8 +1378,9 @@
     "contact": null,
     "media": {
       "image": "assets/img/benefits/alle-climbing.webp",
-      "imageAlt": "알레클라이밍 혜화점 SKKUPASS 혜택 안내 이미지",
-      "audio": "assets/audio/alle-climbing.mp3"
+      "imageAlt": "클라이밍 벽과 홀드 일러스트",
+      "audio": "assets/audio/alle-climbing.mp3",
+      "audioScript": "알레클라이밍 혜화점 스꾸패스 혜택입니다. 성균관대학교 학부생은 강습과 자유이용, 암벽화 대여가 포함된 1일 체험 강습을 만 원 할인받을 수 있어요. 일일 이용권은 20퍼센트, 정규 강습은 등록할 때 10퍼센트 할인됩니다. 일일 이용권 할인은 다른 할인과 중복되지 않아요. 실물 학생증이나 킹고엠을 보여 주세요."
     },
     "sourceOwner": "제58대 총학생회 S'PEAK 대외협력국",
     "postedAt": "2026-08-14",
@@ -1446,8 +1462,9 @@
     },
     "media": {
       "image": "assets/img/benefits/laptop-rental.webp",
-      "imageAlt": "노트북 무료 대여 안내 이미지",
-      "audio": "assets/audio/laptop-rental.mp3"
+      "imageAlt": "와이파이 표시가 있는 노트북 일러스트",
+      "audio": "assets/audio/laptop-rental.mp3",
+      "audioScript": "노트북 무료 대여 안내입니다. 해당 학기 등록을 마친 성균관대학교 재학생은 무선랜 노트북을 무료로 빌릴 수 있어요. GLS의 정보광장, IT서비스 메뉴에서 노트북 대여를 예약하고, 방문할 때 학생증과 신분증을 보여 주세요. 대여는 평일 오전 9시부터 오후 5시까지 가능하고, 분실하거나 손상하면 실비를 모두 부담해야 해요."
     },
     "sourceOwner": "성균관대학교 정보통신처(대표홈페이지 IT서비스)",
     "postedAt": null,

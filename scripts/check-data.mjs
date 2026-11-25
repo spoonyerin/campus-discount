@@ -3,6 +3,7 @@
 // 출력: 스키마 오류, 종료·종료 임박(7일 이내) 혜택, 미확인 항목, 미디어 파일 유무, 사이트 용량
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import {
   validateBenefits, computeStatus, endingSoonLabel, uncheckedItems, formatValidity,
@@ -61,6 +62,14 @@ for (const b of valid) {
 // 4) 미디어 연결 (혜택 ID ↔ 이미지·음성 파일)
 section('미디어 파일');
 const mediaRows = [];
+// 자동 생성한 임시 파일 목록(scripts/media/make-media.py). 같은 경로에 팀 파일을 덮어쓰면 해시가 달라져 '팀 제작'으로 보인다.
+const tempList = fs.existsSync(rel('assets/temp-media.json')) ? JSON.parse(fs.readFileSync(rel('assets/temp-media.json'), 'utf8')) : {};
+const kind = (p) => {
+  const t = tempList[p];
+  if (!t) return '팀 제작';
+  const hash = crypto.createHash('sha256').update(fs.readFileSync(rel(p))).digest('hex');
+  return hash === t.sha256 ? '임시' : '팀 제작';
+};
 for (const b of valid) {
   for (const key of ['image', 'audio']) {
     const p = b.media && b.media[key];
@@ -74,17 +83,19 @@ for (const b of valid) {
       size = `${kb.toFixed(0)}KB`;
       if (key === 'image' && kb > 150) console.log(`  [경고] ${p}가 150KB를 넘습니다 (${size})`);
     }
-    mediaRows.push([b.id, key, p, exists ? `있음 ${size}` : '없음(대체 UI 표시)']);
+    mediaRows.push([b.id, key, p, exists ? `있음(${kind(p)}) ${size}` : '없음(대체 UI 표시)']);
   }
 }
 for (const p of ['assets/video/intro.mp4', 'assets/video/intro-poster.webp', 'assets/video/intro.ko.vtt',
   'assets/img/og.webp', ...[1, 2, 3, 4].map((n) => `assets/img/scenes/scene-${n}.webp`)]) {
   const exists = fs.existsSync(rel(p));
   const size = exists ? `${(fs.statSync(rel(p)).size / 1024 / 1024).toFixed(2)}MB` : '';
-  mediaRows.push(['(공통)', path.extname(p).slice(1), p, exists ? `있음 ${size}` : '없음(대체 UI 표시)']);
+  mediaRows.push(['(공통)', path.extname(p).slice(1), p, exists ? `있음(${kind(p)}) ${size}` : '없음(대체 UI 표시)']);
   if (p.endsWith('.mp4') && exists && fs.statSync(rel(p)).size > 10 * 1024 * 1024) console.log(`  [경고] ${p}가 10MB 목표를 넘습니다`);
 }
 mediaRows.forEach((r) => console.log('  ' + r.join(' | ')));
+const tempCount = mediaRows.filter((r) => String(r[3]).startsWith('있음(임시)')).length;
+if (tempCount) console.log(`  ⓘ 임시 미디어 ${tempCount}개 — 같은 경로에 팀 파일을 덮어쓰면 교체됩니다 (assets/README.md)`);
 
 // 5) 사이트 용량 (배포 대상 파일만)
 section('사이트 용량');

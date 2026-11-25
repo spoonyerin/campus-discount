@@ -42,6 +42,8 @@ scripts/check-data.mjs 데이터·미디어 점검 스크립트
 scripts/test-logic.mjs 검색·기간·시트 변환 시험 스크립트 (시험용 사본 scripts/fixtures/ 사용)
 scripts/sync-sheet.mjs 구글 시트 → benefits.json 변환
 scripts/sheet-lib.mjs  시트 행 변환 규칙
+scripts/media/         임시 미디어 생성기 (make-media.py, tts.ps1)
+assets/temp-media.json 자동 생성한 임시 미디어 목록
 .github/workflows/sync-sheet.yml  GitHub에서 버튼으로 시트 동기화
 ```
 
@@ -94,6 +96,8 @@ git add data && git commit -m "혜택 데이터 갱신" && git push
 ## 미디어 넣기
 
 `assets/README.md`의 표에 있는 이름 그대로 파일을 넣으면 코드 수정 없이 표시됩니다. 파일이 없으면 자리표시자 이미지·4단계 안내 카드가 대신 보이고, 음성 플레이어는 숨겨집니다.
+
+지금 들어 있는 이미지·음성·영상은 자동으로 만든 **임시 파일**입니다. 팀이 만든 파일을 같은 이름으로 덮어쓰면 교체되고, `node scripts/check-data.mjs`에서 `임시` / `팀 제작`을 구분해 보여 줍니다. 다시 만드는 방법은 `assets/README.md`에 있습니다.
 
 ## GitHub Pages 배포 (무료)
 
