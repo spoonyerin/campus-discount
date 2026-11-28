@@ -35,6 +35,7 @@ js/data.js            JSON 로딩·스키마 검증·상태(종료/추가 확인
 js/render.js          목록 카드·상세 패널 렌더링
 js/audio.js           음성 안내·안내 영상 재생 제어
 data/benefits.json    혜택 데이터 (화면이 읽는 파일, 시트에서 생성)
+data/audience-notes.json  대상자(A 학부 재학생·B 휴학생·졸업생)별 대표 안내 문구 (직접 관리)
 data/sheet-map.json   시트 행 ↔ 혜택 id·근거 번호 고정표
 assets/               이미지·음성·영상 (목록은 assets/README.md)
 docs/test-checklist.md 테스트 체크리스트
@@ -74,6 +75,14 @@ git add data && git commit -m "혜택 데이터 갱신" && git push
 - 링크의 `utm_` 같은 추적용 쿼리는 자동으로 지워집니다.
 - **혜택 이름을 바꾸면 새 혜택으로 취급**해 번호·id가 새로 붙습니다. 이름을 고쳐야 하면 `data/sheet-map.json`의 `name`도 같이 고칩니다.
 - 001 훠궈·002 TOEIC처럼 시트에 없는 항목은 `benefits.json`에 직접 쓴 내용이 유지됩니다.
+
+## 대상자 선택 (첫 화면)
+접속하면 "학부 재학생 / 휴학생·졸업생 / 전체 혜택 보기" 카드 3장이 화면 전체에 나옵니다.
+
+- 목록: 모든 혜택을 보여 주되, 공지 '대상' 칸에 내 상황이 적힌 혜택을 위로 올립니다. 종료된 혜택은 그래도 맨 아래입니다.
+- 상세: 대상자별 안내 2~3문장 + 도움말(대상 원문·다음 행동). `data/audience-notes.json`에 문구가 있는 혜택은 그 문구를, 없는 혜택은 `js/audience.js`의 자동 규칙을 씁니다.
+- 선택은 저장하지 않습니다(새로고침하면 다시 고름). 공유 링크(`#/benefit/<id>`)로 들어오면 '전체 혜택 보기'로 엽니다.
+- 시트 동기화는 `audience-notes.json`을 건드리지 않습니다. 공지가 바뀌면 문구를 다시 대조하고 `checkedAt`을 고치세요. `node scripts/check-data.mjs`가 없는 id·오래된 문구를 알려 줍니다.
 
 ## benefits.json 직접 고치기 (시트에 없는 항목)
 

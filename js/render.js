@@ -1,5 +1,6 @@
 // 목록·상세 렌더링 (innerHTML 대신 DOM API로 만들어 데이터 속 문자가 HTML로 해석되지 않게 한다)
 import { computeStatus, formatValidity, MSG_UNKNOWN, uncheckedItems, endingSoonLabel, isEmpty } from './data.js';
+import { AUDIENCES, MSG_NO_TARGET, guideFor, nextSteps } from './audience.js';
 
 const PHONE_RE = /(0\d{1,2}-\d{3,4}-\d{4})/g;
 
@@ -78,8 +79,9 @@ export function renderCategories(listEl, categories, active, total, onSelect) {
 }
 
 /** 카드에 붙는 칩: 상태 칩 + 데이터의 highlights */
-function statusChips(b, status, now) {
+function statusChips(b, status, now, mine) {
   const chips = [];
+  if (mine) chips.push(el('li', { class: 'chip chip--mine' }, mine));
   const soon = endingSoonLabel(b, now);
   if (soon) chips.push(el('li', { class: 'chip chip--warn' }, soon));
   if (status === 'expired') chips.push(el('li', { class: 'chip chip--ended' }, '종료'));
@@ -90,7 +92,8 @@ function statusChips(b, status, now) {
   return chips;
 }
 
-export function renderCard(b, now, onOpen) {
+/** mine: 대상자 선택 시 "내 상황 대상" 칩 문구 (없으면 null) */
+export function renderCard(b, now, onOpen, mine = null) {
   const status = computeStatus(b, now);
   const sourceHref = b.links.official || b.links.source;
   const validity = formatValidity(b.validity);
@@ -102,7 +105,7 @@ export function renderCard(b, now, onOpen) {
         el('h3', { class: 'card__name', id: `card-${b.id}` }, b.name),
         el('p', { class: 'card__summary' }, b.summary),
         (validity || (b.validity && b.validity.note)) && el('p', { class: 'card__summary' }, validity || b.validity.note),
-        el('ul', { class: 'chips', 'aria-label': '핵심 조건' }, statusChips(b, status, now)),
+        el('ul', { class: 'chips', 'aria-label': '핵심 조건' }, statusChips(b, status, now, mine)),
         el('div', { class: 'card__actions' },
           externalLink(sourceHref, b.links.official ? '공식 링크' : '출처 공지'),
           el('button', {
@@ -111,8 +114,8 @@ export function renderCard(b, now, onOpen) {
           }, '상세 보기')))));
 }
 
-export function renderList(listEl, items, now, onOpen) {
-  listEl.replaceChildren(...items.map((b) => renderCard(b, now, onOpen)));
+export function renderList(listEl, items, now, onOpen, mineFor = () => null) {
+  listEl.replaceChildren(...items.map((b) => renderCard(b, now, onOpen, mineFor(b))));
   listEl.setAttribute('aria-busy', 'false');
 }
 
@@ -161,7 +164,29 @@ function contactContent(c) {
  * 상세 패널 내용을 만든다. 음성 영역(.voice)은 audio.js가 연결한다.
  * 표시 순서: 혜택명 → (추가 확인 필요) → 핵심 혜택 → 대상/이용 방법/기간/조건/제외·유의사항 → 이미지 → 음성 → 공식 링크 → 출처·확인일
  */
-export function renderDetail(b, now, { onClose, onOpenOther, others = [] }) {
+/** 대상자 맞춤 안내 상자 + 도움말(대상 원문·다음 행동). '전체 혜택 보기'면 null */
+function guideBox(b, audience, notes) {
+  const g = guideFor(b, audience, notes);
+  if (!g) return null;
+  const label = AUDIENCES[audience].label;
+  return el('section', { class: 'box box--guide', 'aria-labelledby': 'guide-title' },
+    el('h3', { id: 'guide-title' }, `${label} 기준 안내`),
+    g.text.map((t) => el('p', {}, t)),
+    el('p', { class: 'guide__src' }, g.source === 'team'
+      ? '공지 원문을 바탕으로 팀이 정리한 안내예요. 아래 대상·조건 원문과 함께 확인하세요.'
+      : '공지의 대상·조건 칸 원문을 규칙에 따라 정리한 안내예요. 아래 원문과 함께 확인하세요.'),
+    el('details', { class: 'guide-help' },
+      el('summary', {}, '도움말: 대상 원문과 다음 행동'),
+      el('div', { class: 'guide-help__body' },
+        el('div', {},
+          el('h4', {}, '공지의 대상 원문'),
+          isEmpty(b.target) ? el('p', { class: 'unknown' }, MSG_NO_TARGET) : el('ul', {}, b.target.map((t) => el('li', {}, t)))),
+        el('div', {},
+          el('h4', {}, '다음 행동'),
+          el('ol', {}, nextSteps(b, audience).map((t) => el('li', {}, t)))))));
+}
+
+export function renderDetail(b, now, { onClose, onOpenOther, others = [], audience = 'all', notes = {} }) {
   const status = computeStatus(b, now);
   const checks = uncheckedItems(b, now);
 
@@ -188,6 +213,8 @@ export function renderDetail(b, now, { onClose, onOpenOther, others = [] }) {
       el('h3', { id: 'check-title' }, '추가 확인 필요'),
       el('p', { class: 'fact__note' }, '아래 항목은 공식 자료에서 확인되지 않았어요. 이용 전 공식 링크에서 꼭 확인하세요.'),
       el('ul', {}, checks.map((c) => el('li', {}, c)))),
+
+    guideBox(b, audience, notes),
 
     el('section', { 'aria-labelledby': 'benefit-core' },
       el('p', { class: 'highlight', id: 'benefit-core' },

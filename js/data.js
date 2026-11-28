@@ -276,13 +276,17 @@ const KEYS = {
   recentCheck: (a, b) => String(b.lastCheckedAt).localeCompare(String(a.lastCheckedAt)),
 };
 
-/** 정렬: 어느 방식이든 종료된 혜택은 맨 아래. 같으면 sourceNo 순서. */
-export function sortBenefits(list, now = new Date(), mode = 'default') {
+/**
+ * 정렬: 어느 방식이든 종료된 혜택은 맨 아래. 같으면 sourceNo 순서.
+ * rank(b)를 주면(대상자 선택) 종료 여부 다음으로 rank가 작은 혜택을 먼저 둔다.
+ */
+export function sortBenefits(list, now = new Date(), mode = 'default', rank = null) {
   const key = KEYS[mode] || KEYS.default;
+  const r = rank || (() => 0);
   return [...list].sort((a, b) => {
     const ea = computeStatus(a, now) === 'expired' ? 1 : 0;
     const eb = computeStatus(b, now) === 'expired' ? 1 : 0;
-    return ea - eb || key(a, b, now) || bySourceNo(a, b);
+    return ea - eb || r(a) - r(b) || key(a, b, now) || bySourceNo(a, b);
   });
 }
 

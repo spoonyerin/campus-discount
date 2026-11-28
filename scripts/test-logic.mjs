@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as lib from '../js/data.js';
 import * as sheet from './sheet-lib.mjs';
+import * as aud from '../js/audience.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/fixtures/benefits-sample.json'), 'utf8'));
@@ -132,6 +133,36 @@ check('O7', '알 수 없는 방식이면 기본순', sorted('없는방식'), sor
 console.log('\n[8] 기간 표시 문구');
 check('P1', '시작일 없이 종료일만 → "~ 2026. 12. 31.까지"', lib.formatValidity({ start: null, end: '12-31', year: 2026 }), '~ 2026. 12. 31.까지');
 check('P2', '연도·시작일 없음 → "제휴 기간 ~ 11/30까지 · 연도 확인 필요"', lib.formatValidity({ start: null, end: '11-30', year: null }), '제휴 기간 ~ 11/30까지 · 연도 확인 필요');
+
+console.log('\n[10] 대상자 선택 (A 학부 재학생 / B 휴학생·졸업생)');
+const T = (n, target, extra = {}) => ({ ...structuredClone(data[1]), id: `t${n}`, sourceNo: `90${n}`, target, conditions: [], ...extra });
+const tA = T(1, ['성균관대학교 학부생']);
+const tS = T(2, ['성균관대학교 학생, 교직원 및 가족']);
+const tB = T(3, ['성균관대학교 재학생, 휴학생, 졸업생']);
+const tE = T(4, []);
+const tG = T(5, ['대학원생']);
+const tX = T(6, ['성균관대학교 예술대학 디자인학과 재학생'], { conditions: ['디자인학과 소속 학생만 대상'] });
+const tH = T(7, ['성균관대학교 휴학생']);
+check('U1', 'A 판정: 학부생 yes · 학생만 student · 비어 있음 none · 대학원생 unknown',
+  [tA, tS, tE, tG].map(aud.matchA), ['yes', 'student', 'none', 'unknown']);
+check('U2', '"휴학생" 속 "학생"은 A의 "학생" 표기로 보지 않음', aud.matchA(tH), 'unknown');
+check('U3', 'B 판정: 포함/미확인 단어 구분', aud.matchB(tB), { found: ['휴학생', '졸업생'], missing: ['수료생'] });
+check('U4', 'B 문구: 포함 + "공지에서 확인되지 않습니다" (불가라고 단정하지 않음)',
+  aud.autoGuide(tB, 'b').slice(0, 2), ['공지 대상에 휴학생·졸업생이 포함되어 있어요.', '수료생은 공지에서 확인되지 않습니다.']);
+check('U5', 'A 문구: "학생"만 → 표기 안내', aud.autoGuide(tS, 'a')[0].startsWith('공지에는 "학생"으로만 표기'), true);
+check('U6', '대상 칸이 비면 A·B 모두 "대상 정보 없음"', [aud.autoGuide(tE, 'a')[0], aud.autoGuide(tE, 'b')[0]].every((t) => t.startsWith('대상 정보 없음')), true);
+check('U7', '학과 조건 → "다른 조건이 있어요" + 조건 칸 원문', aud.autoGuide(tX, 'a').at(-1), '다른 조건이 있어요: 디자인학과 소속 학생만 대상.');
+check('U8', '어느 경우든 3문장 이하', [tA, tS, tB, tE, tG, tX].every((b) => aud.autoGuide(b, 'a').length <= 3 && aud.autoGuide(b, 'b').length <= 3), true);
+check('U9', '전체 혜택 보기 → 안내 없음(기존 화면 그대로)', aud.guideFor(tA, 'all'), null);
+const teamNotes = { t1: { a: '팀 문구' } };
+check('U10', '대표 문구가 있으면 우선, 없으면 자동 규칙', [aud.guideFor(tA, 'a', teamNotes).source, aud.guideFor(tA, 'b', teamNotes).source], ['team', 'auto']);
+const pool = [tG, tE, tS, tA, tB];
+const order = (a) => lib.sortBenefits(pool, day('2026-11-26'), 'default', a === 'all' ? null : (b) => aud.audienceRank(b, a)).map((b) => b.id);
+check('U11', 'A 정렬: 학부·재학 명시 → "학생"만·정보 없음 → 그 밖', order('a'), ['t1', 't3', 't2', 't4', 't5']);
+check('U12', 'B 정렬: 휴학생·졸업생 명시 → "학생"만·정보 없음 → 그 밖', order('b'), ['t3', 't2', 't4', 't1', 't5']);
+check('U13', '전체 → 기존 순서와 같음', order('all'), lib.sortBenefits(pool, day('2026-11-26')).map((b) => b.id));
+const ended = { ...tB, id: 't8', sourceNo: '908', validity: { start: null, end: '11-01', year: 2026 } };
+check('U14', '대상 일치여도 종료된 혜택은 맨 아래', lib.sortBenefits([ended, tG], day('2026-11-26'), 'default', (b) => aud.audienceRank(b, 'b')).map((b) => b.id), ['t5', 't8']);
 
 console.log(`\n합계: 통과 ${pass} / 실패 ${fail}`);
 process.exit(fail ? 1 : 0);

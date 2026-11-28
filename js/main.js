@@ -2,6 +2,7 @@
 import { loadBenefits, getCategories, matchesQuery, matchesCampus, sortBenefits, SORT_OPTIONS } from './data.js';
 import { renderCategories, renderList, renderDetail } from './render.js';
 import { setupVoice, stopVoice, setupHeroVideo, setupSceneImages } from './audio.js';
+import { AUDIENCES, audienceRank, matchB, extraConditions, loadNotes } from './audience.js';
 
 const $ = (id) => document.getElementById(id);
 const DEFAULT_TITLE = document.title;
@@ -13,6 +14,8 @@ const state = {
   campus: '전체',
   query: '',
   sort: 'default',
+  audience: 'all', // 'a' 학부 재학생 | 'b' 휴학생·졸업생 | 'all' 전체 (저장하지 않음)
+  notes: {},       // data/audience-notes.json 대표 문구
 };
 
 const OTHERS_MAX = 6;
@@ -26,7 +29,8 @@ const detail = {
 // ----- 목록 -----
 
 function filtered() {
-  return sortBenefits(state.benefits, new Date(), state.sort).filter((b) =>
+  const rank = state.audience === 'all' ? null : (b) => audienceRank(b, state.audience);
+  return sortBenefits(state.benefits, new Date(), state.sort, rank).filter((b) =>
     (state.category === '전체' || b.category === state.category)
     && matchesCampus(b, state.campus) && matchesQuery(b, state.query));
 }
@@ -42,9 +46,71 @@ function renderAll() {
     btn.setAttribute('aria-pressed', String(btn.dataset.campus === state.campus));
   });
   const items = filtered();
-  renderList($('benefit-list'), items, new Date(), openFromClick);
+  renderList($('benefit-list'), items, new Date(), openFromClick, mineChip);
+  renderAudienceBar();
   $('empty-state').hidden = items.length > 0;
   $('result-count').textContent = `총 ${items.length}건`;
+}
+
+// ----- 대상자 선택 -----
+
+/** 공지 대상에 내 상황이 적힌 혜택의 카드 칩 문구 */
+function mineChip(b) {
+  if (state.audience === 'all' || audienceRank(b, state.audience) !== 0) return null;
+  const base = state.audience === 'a' ? '학부 재학생 대상' : `${matchB(b).found.join('·')} 포함`;
+  return extraConditions(b) ? `${base} · 다른 조건 있음` : base;
+}
+
+function renderAudienceBar() {
+  $('audience-bar').hidden = false;
+  $('audience-label').textContent = AUDIENCES[state.audience].label;
+  $('audience-hint').hidden = state.audience === 'all';
+}
+
+const gate = { reopened: false };
+
+function openGate({ reopened = false } = {}) {
+  const g = $('audience-gate');
+  gate.reopened = reopened;
+  g.querySelectorAll('[data-audience]').forEach((btn) => {
+    if (reopened && btn.dataset.audience === state.audience) btn.setAttribute('aria-current', 'true');
+    else btn.removeAttribute('aria-current');
+  });
+  if (!g.open) g.showModal();
+  const current = reopened && g.querySelector('[aria-current="true"]');
+  (current || g.querySelector('[data-audience]')).focus();
+}
+
+function chooseAudience(aud) {
+  const reopened = gate.reopened;
+  state.audience = aud;
+  $('audience-gate').close();
+  if (state.benefits.length) renderAll();
+  if (reopened) { $('audience-change').focus(); return; }
+  if (aud === 'all') {
+    window.scrollTo(0, 0);
+    $('hero-heading').focus({ preventScroll: true }); // 기존 첫 화면 그대로
+  } else {
+    $('benefit-list-heading').scrollIntoView({ block: 'start' });
+    $('benefit-list-heading').focus({ preventScroll: true });
+  }
+}
+
+function setupGate() {
+  const g = $('audience-gate');
+  g.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-audience]');
+    if (btn) chooseAudience(btn.dataset.audience);
+  });
+  // Esc: 처음이면 '전체 혜택 보기'(기존 화면)로, [변경]으로 연 경우에는 지금 선택을 유지하고 닫는다.
+  // (브라우저가 Esc 닫기를 막지 못하게 하는 경우가 있어, 막지 않고 선택으로 처리한다)
+  g.addEventListener('cancel', (e) => {
+    e.preventDefault();
+    chooseAudience(gate.reopened ? state.audience : 'all');
+  });
+  $('audience-change').addEventListener('click', () => openGate({ reopened: true }));
+  // 공유 링크(#/benefit/<id>)로 바로 들어오면 선택 화면을 건너뛰고 '전체 혜택 보기'로 연다
+  if (!DETAIL_RE.test(location.hash)) openGate();
 }
 
 function resetFilters() {
@@ -92,6 +158,8 @@ function showDetail(id, { autoplay }) {
     onClose: () => closeDetail(),
     onOpenOther: (otherId) => openFromClick(otherId),
     others,
+    audience: state.audience,
+    notes: state.notes,
   }));
   if (!dialog.open) dialog.showModal();
   if (!detail.returnId) detail.returnId = id;
@@ -158,6 +226,7 @@ function showLoadError(err) {
 async function init() {
   setupHeroVideo();
   setupSceneImages();
+  setupGate();
 
   $('search-input').addEventListener('input', (e) => {
     state.query = e.target.value;
@@ -183,8 +252,10 @@ async function init() {
   dialog.addEventListener('cancel', (e) => { e.preventDefault(); closeDetail(); }); // Esc
   dialog.addEventListener('click', (e) => { if (e.target === dialog) closeDetail(); }); // 바깥(배경) 클릭
 
+  const notesReady = loadNotes(); // 실패해도 빈 객체 → 자동 규칙
   try {
     state.benefits = await loadBenefits();
+    state.notes = await notesReady;
   } catch (err) {
     showLoadError(err);
     return;

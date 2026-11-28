@@ -30,6 +30,23 @@ errors.forEach((e) => { problems++; console.log('  [오류]', e); });
 warnings.forEach((w) => console.log('  [경고]', w));
 if (!errors.length) console.log('  스키마 위반 없음');
 
+// 1-2) 대상자 안내 대표 문구 (data/audience-notes.json)
+section('대상자 안내 대표 문구');
+try {
+  const nf = JSON.parse(fs.readFileSync(rel('data/audience-notes.json'), 'utf8'));
+  const ids = new Set(valid.map((b) => b.id));
+  const entries = Object.entries(nf.notes || {});
+  for (const [id, n] of entries) {
+    if (!ids.has(id)) { problems++; console.log(`  [오류] '${id}'는 benefits.json에 없는 id입니다`); }
+    for (const k of Object.keys(n)) if (!['a', 'b'].includes(k)) { problems++; console.log(`  [오류] ${id}: 키는 a 또는 b만 쓸 수 있습니다 (${k})`); }
+  }
+  console.log(`  대표 문구 ${entries.length}건 (확인일 ${nf.checkedAt || '미기록'}) · 나머지는 자동 규칙`);
+  const stale = valid.filter((b) => nf.notes[b.id] && nf.checkedAt && b.lastCheckedAt > nf.checkedAt);
+  stale.forEach((b) => console.log(`  [경고] ${b.id}: 혜택 확인일(${b.lastCheckedAt})이 대표 문구 확인일보다 최근입니다 — 문구 재대조 필요`));
+} catch (e) {
+  console.log('  [경고] audience-notes.json을 읽을 수 없습니다 — 사이트는 자동 규칙으로 표시합니다:', e.message);
+}
+
 // 2) 상태
 section('상태 (오늘 기준)');
 const now = new Date();
