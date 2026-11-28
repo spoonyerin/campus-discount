@@ -162,7 +162,7 @@ function contactContent(c) {
 
 /**
  * 상세 패널 내용을 만든다. 음성 영역(.voice)은 audio.js가 연결한다.
- * 표시 순서: 혜택명 → (추가 확인 필요) → 핵심 혜택 → 대상/이용 방법/기간/조건/제외·유의사항 → 이미지 → 음성 → 공식 링크 → 출처·확인일
+ * 표시 순서: 혜택명 → (추가 확인 필요) → 핵심 혜택 → 대상/이용 방법/기간/조건/제외·유의사항 → (대상자 안내·도움말) → 이미지 → 음성 → 공식 링크 → 출처·확인일
  */
 /** 대상자 맞춤 안내 상자 + 도움말(대상 원문·다음 행동). '전체 혜택 보기'면 null */
 function guideBox(b, audience, notes) {
@@ -214,8 +214,6 @@ export function renderDetail(b, now, { onClose, onOpenOther, others = [], audien
       el('p', { class: 'fact__note' }, '아래 항목은 공식 자료에서 확인되지 않았어요. 이용 전 공식 링크에서 꼭 확인하세요.'),
       el('ul', {}, checks.map((c) => el('li', {}, c)))),
 
-    guideBox(b, audience, notes),
-
     el('section', { 'aria-labelledby': 'benefit-core' },
       el('p', { class: 'highlight', id: 'benefit-core' },
         el('span', { class: 'highlight__label' }, '핵심 혜택'),
@@ -230,6 +228,9 @@ export function renderDetail(b, now, { onClose, onOpenOther, others = [], audien
         fact('제외·유의사항', listOrUnknown(b.exceptions)),
         locs && fact('장소', locs),
         contact && fact('문의', contact))),
+
+    // 대상자 안내는 혜택 설명 뒤에 둔다 (상세를 열 때마다 맨 위에서 다시 읽지 않도록)
+    guideBox(b, audience, notes),
 
     b.media && b.media.image && el('section', { class: 'detail__figure', 'aria-label': '관련 이미지' },
       el('figure', {}, imageWithFallback(b.media.image, b.media.imageAlt))),
