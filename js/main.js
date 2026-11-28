@@ -49,7 +49,10 @@ function renderAll() {
   renderList($('benefit-list'), items, new Date(), openFromClick, mineChip);
   renderAudienceBar();
   $('empty-state').hidden = items.length > 0;
-  $('result-count').textContent = `총 ${items.length}건`;
+  // 결과 수는 aria-live 영역이라, 대상자 기준을 함께 적으면 순서가 바뀐 것도 화면낭독기로 알려진다
+  $('result-count').textContent = state.audience === 'all'
+    ? `총 ${items.length}건`
+    : `총 ${items.length}건 · ${AUDIENCES[state.audience].label} 기준 순서`;
 }
 
 // ----- 대상자 선택 -----

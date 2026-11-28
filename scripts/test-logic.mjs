@@ -162,7 +162,10 @@ check('U11', 'A 정렬: 학부·재학 명시 → "학생"만·정보 없음 →
 check('U12', 'B 정렬: 휴학생·졸업생 명시 → "학생"만·정보 없음 → 그 밖', order('b'), ['t3', 't2', 't4', 't1', 't5']);
 check('U13', '전체 → 기존 순서와 같음', order('all'), lib.sortBenefits(pool, day('2026-11-26')).map((b) => b.id));
 const ended = { ...tB, id: 't8', sourceNo: '908', validity: { start: null, end: '11-01', year: 2026 } };
-check('U14', '대상 일치여도 종료된 혜택은 맨 아래', lib.sortBenefits([ended, tG], day('2026-11-26'), 'default', (b) => aud.audienceRank(b, 'b')).map((b) => b.id), ['t5', 't8']);
+const tD = T(9, ['성균관대학교 재학생 및 휴학생'], { howTo: ['네이버에서 검색 후 네이버 예약', '신청: 네이버 예약(직접 URL 확인 안 됨)'] });
+check('U15', '다음 행동: 다른 단계와 겹치는 "신청:" 메모는 뺌', aud.nextSteps(tD, 'b').includes('신청: 네이버 예약(직접 URL 확인 안 됨)'), false);
+check('U16', 'B 다음 행동: 확인되지 않은 학적만 짚어 안내', aud.nextSteps(tB, 'b').at(-2), '수료생이라면 이용 전 문의처나 공식 링크에서 먼저 확인하세요.');
+check('U14','대상 일치여도 종료된 혜택은 맨 아래', lib.sortBenefits([ended, tG], day('2026-11-26'), 'default', (b) => aud.audienceRank(b, 'b')).map((b) => b.id), ['t5', 't8']);
 
 console.log(`\n합계: 통과 ${pass} / 실패 ${fail}`);
 process.exit(fail ? 1 : 0);

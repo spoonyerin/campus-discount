@@ -120,10 +120,16 @@ export function guideFor(b, aud, notes = {}) {
 
 /** 도움말의 '다음 행동' 목록 (데이터에 있는 이용 방법 + 링크 안내) */
 export function nextSteps(b, aud) {
-  const steps = (b.howTo || []).filter(Boolean).map((s) => s);
+  const how = (b.howTo || []).filter(Boolean);
+  // 시트 변환이 붙인 "신청: 네이버 예약(직접 URL 확인 안 됨)" 같은 메모는, 괄호 앞 내용이 다른 단계에 이미 있으면 뺀다
+  const steps = how.filter((s) => {
+    const m = s.match(/^신청:\s*([^(]+)/);
+    return !(m && how.some((o) => o !== s && o.includes(m[1].trim())));
+  });
   if (aud === 'b') {
     const m = matchB(b);
-    if (!m || m.missing.length) steps.push('내 학적 상태가 대상인지 확실하지 않다면 이용 전 문의처나 공식 링크에서 먼저 확인하세요.');
+    if (!m) steps.push('내 학적 상태가 대상인지 이용 전 문의처나 공식 링크에서 먼저 확인하세요.');
+    else if (m.missing.length) steps.push(`${joinWords(m.missing)}이라면 이용 전 문의처나 공식 링크에서 먼저 확인하세요.`);
   } else if (aud === 'a' && matchA(b) !== 'yes') {
     steps.push('학부 재학생이 대상인지 확실하지 않다면 이용 전 문의처나 공식 링크에서 먼저 확인하세요.');
   }
