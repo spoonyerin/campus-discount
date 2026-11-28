@@ -13,8 +13,8 @@ export const AUDIENCES = {
 export const MSG_NO_TARGET = '대상 정보 없음';
 export const B_WORDS = ['휴학생', '졸업생', '수료생'];
 const A_RE = /학부|재학/;
-// 학과·캠퍼스·수강·신규 고객처럼 학적 말고 다른 자격이 붙는 경우
-const EXTRA_RE = /학과|캠퍼스|인사캠|자과캠|수강|신규|주문 이력/;
+// 학적 말고 다른 조건: 학과·캠퍼스·수강·신규 고객 + 이용 시간(요일·시각) (A 프롬프트: 캠퍼스·학과·이용 시간)
+const EXTRA_RE = /학과|캠퍼스|인사캠|자과캠|수강|신규|주문 이력|평일|주말|공휴일|[월화수목금토일]요일|[월화수목금토일]~[월화수목금토일]|\d{1,2}\s*시|\d{1,2}:\d{2}|오전|오후|시간대/;
 const PROOF_RE = /증명서|증빙/;
 
 export function targetText(b) {
@@ -72,7 +72,7 @@ export function audienceRank(b, aud) {
 }
 
 const joinWords = (ws) => ws.join('·');
-const sentence = (s) => (/[.!?)]$/.test(s) ? s : `${s}.`);
+const sentence = (s) => (/[.!?]$/.test(s) ? s : `${s}.`);
 
 /**
  * 자동 규칙 안내 문구 (문장 배열, 2~3문장). 데이터 원문만 이어 붙인다.
@@ -80,7 +80,10 @@ const sentence = (s) => (/[.!?)]$/.test(s) ? s : `${s}.`);
 export function autoGuide(b, aud) {
   if (aud !== 'a' && aud !== 'b') return [];
   const t = targetText(b);
-  if (!t) return [`${MSG_NO_TARGET}. 이용 전 공식 링크에서 대상을 확인하세요.`];
+  if (!t) {
+    const extra = extraConditions(b);
+    return [`${MSG_NO_TARGET}. 이용 전 공식 링크에서 대상을 확인하세요.`, extra && sentence(`다른 조건이 있어요: ${extra}`)].filter(Boolean);
+  }
   const out = [];
   const how = (b.howTo || []).filter(Boolean)[0];
   const extra = extraConditions(b);

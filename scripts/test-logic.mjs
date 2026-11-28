@@ -165,6 +165,11 @@ const ended = { ...tB, id: 't8', sourceNo: '908', validity: { start: null, end: 
 const tD = T(9, ['성균관대학교 재학생 및 휴학생'], { howTo: ['네이버에서 검색 후 네이버 예약', '신청: 네이버 예약(직접 URL 확인 안 됨)'] });
 check('U15', '다음 행동: 다른 단계와 겹치는 "신청:" 메모는 뺌', aud.nextSteps(tD, 'b').includes('신청: 네이버 예약(직접 URL 확인 안 됨)'), false);
 check('U16', 'B 다음 행동: 확인되지 않은 학적만 짚어 안내', aud.nextSteps(tB, 'b').at(-2), '수료생이라면 이용 전 문의처나 공식 링크에서 먼저 확인하세요.');
+const tTime = T(10, ['성균관대학교 학부생'], { conditions: ['평일 15시 이후, 주말 전 시간대 방문 시'] });
+check('U17', '이용 시간 조건 → "다른 조건이 있어요" + 조건 원문 (A 프롬프트)', aud.autoGuide(tTime, 'a').at(-1), '다른 조건이 있어요: 평일 15시 이후, 주말 전 시간대 방문 시.');
+const tNoTargetTime = T(11, [], { conditions: ['월~목요일에만 사용 가능'] });
+check('U18', '대상 정보 없음이어도 이용 시간 조건은 함께 표시', aud.autoGuide(tNoTargetTime, 'b'), ['대상 정보 없음. 이용 전 공식 링크에서 대상을 확인하세요.', '다른 조건이 있어요: 월~목요일에만 사용 가능.']);
+check('U19', '시간과 무관한 조건은 추가 조건으로 보지 않음', aud.extraConditions(T(12, ['성균관대학교 학부생'], { conditions: ['학생증 인증'] })), null);
 check('U14','대상 일치여도 종료된 혜택은 맨 아래', lib.sortBenefits([ended, tG], day('2026-11-26'), 'default', (b) => aud.audienceRank(b, 'b')).map((b) => b.id), ['t5', 't8']);
 
 console.log(`\n합계: 통과 ${pass} / 실패 ${fail}`);
