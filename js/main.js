@@ -65,6 +65,7 @@ function mineChip(b) {
 }
 
 function renderAudienceBar() {
+  if (!$('audience-bar')) return; // 옛 index.html이 캐시된 경우 (아래 setupGate 설명)
   $('audience-bar').hidden = false;
   $('audience-label').textContent = AUDIENCES[state.audience].label;
   $('audience-hint').hidden = state.audience === 'all';
@@ -101,6 +102,12 @@ function chooseAudience(aud) {
 
 function setupGate() {
   const g = $('audience-gate');
+  // 배포 직후 브라우저에 옛 index.html(선택 화면 없음)이 캐시되어 새 main.js와 섞이면 요소가 없다.
+  // 이때 오류로 멈추지 않고 '전체 혜택 보기'(기존 화면)로 동작하게 한다. (GitHub Pages 캐시 최대 10분)
+  if (!g || !$('audience-change')) {
+    console.warn('[대상자 선택] 화면 요소가 없어 전체 혜택 보기로 표시합니다. 새로고침하면 선택 화면이 나옵니다.');
+    return;
+  }
   g.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-audience]');
     if (btn) chooseAudience(btn.dataset.audience);
